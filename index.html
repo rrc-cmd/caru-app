@@ -311,7 +311,7 @@ const ROSTER={
   "The Reading":["Austyn Hanley","Angelina Gallagher","Tenley Vlasac","Rosemary Vest","Skye Bridges","Ava Charlton","Gia Birchenough"],
   "Bassline":["Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Emma Bonder","Ally Bonder","Kelsey Steele"],
   "Handle With Care":["Sofia Kulp","Ava Charlton","Angelina Gallagher","Gia Birchenough","Rosemary Vest","Tenley Vlasac","Elizabeth Casciano","Emma Schmelzer","Skye Bridges"],
-  "MonStars of Mayhem":["All CaRu Crew Members"],
+  "MonStars of Mayhem":["Ava Charlton","Angelina Gallagher","Sofia Kulp","Austyn Hanley","Skye Bridges","Elizabeth Casciano","Rosemary Vest","Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Mikayla Irene","Angelina Vitadello","Poppy Sweeney","Kaitlyn Naughton","Leila Advani","Isabelle Marie Breaux","Raelyn Groninger","Makayla Reading","Emma Schmelzer","Tenley Vlasac","Kelsey Steele","Gia Birchenough"],
   "Bad Company":["Rosemary Vest"],
   "That's Life":["Tenley Vlasac"],
   "Dangerous":["Kallista Jacobs"],
@@ -380,7 +380,7 @@ const ENTRIES=[
   {date:"04/26",time:"12:02 PM",type:"award",label:"Sunday Session 1 Awards"}
 ];
 
-const ALL_DANCERS=[...new Set(Object.values(ROSTER).flat().filter(d=>d!=="All CaRu Crew Members"))].sort();
+const ALL_DANCERS=[...new Set(Object.values(ROSTER).flat())].sort();
 const CC={Jazz:"b-jazz",Contemporary:"b-contemporary",Lyrical:"b-lyrical","Hip Hop":"b-hiphop",Tap:"b-tap","Musical Theatre":"b-musical",Open:"b-open"};
 const DL={"04/24":"Friday","04/25":"Saturday","04/26":"Sunday"};
 const DD={"04/24":"April 24","04/25":"April 25","04/26":"April 26"};
@@ -479,3 +479,4 @@ render();
 </script>
 </body>
 </html>
+
