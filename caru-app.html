@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Dance Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0e0d; --ink2: #4a4845; --ink3: #9a9794;
+  --paper: #faf8f4; --surface: #f2efe9;
+  --border: rgba(15,14,13,0.09); --border2: rgba(15,14,13,0.16);
+  --accent: #c8403a; --gold: #e8c547;
+  --jazz: #3C3489; --jazz-bg: #EEEDFE;
+  --contemp: #085041; --contemp-bg: #E1F5EE;
+  --lyrical: #72243E; --lyrical-bg: #FBEAF0;
+  --hiphop: #712B13; --hiphop-bg: #FAECE7;
+  --tap: #444441; --tap-bg: #F1EFE8;
+  --musical: #633806; --musical-bg: #FAEEDA;
+  --open: #0C447C; --open-bg: #E6F1FB;
+  --tab-h: 64px;
+  --sat: env(safe-area-inset-top,0px);
+  --sab: env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;overscroll-behavior:none}
+
+/* TOP BAR */
+.topbar{flex-shrink:0;background:var(--ink);display:flex;align-items:flex-end;justify-content:space-between;padding:0 16px 0;padding-top:var(--sat);height:calc(52px + var(--sat));border-bottom:2px solid rgba(255,255,255,0.7);z-index:50}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;width:100%;height:52px}
+.brand{font-family:'DM Serif Display',serif;font-size:18px;color:var(--paper)}
+.brand em{font-style:italic;color:var(--gold)}
+.desktop-nav{display:none !important;gap:0}
+.dn-link{font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:rgba(250,248,244,.4);padding:0 14px;height:52px;display:flex;align-items:center;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;user-select:none}
+.dn-link:hover{color:rgba(250,248,244,.8)}
+.dn-link.active{color:var(--gold);border-color:var(--gold)}
+.topbar-sub{font-size:11px;color:rgba(250,248,244,.35);letter-spacing:.03em}
+
+/* PAGES */
+.pages{flex:1;overflow:hidden;position:relative}
+.page{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;display:none;padding-bottom:1rem}
+.page.active{display:block}
+
+/* BOTTOM TABS */
+.tabbar{display:none !important;height:calc(var(--tab-h) + var(--sab));padding-bottom:var(--sab);z-index:50}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:rgba(250,248,244,.3);transition:color .15s;padding-top:4px;user-select:none}
+.tab.active{color:var(--gold)}
+.tab svg{width:22px;height:22px}
+.tab-lbl{font-size:10px;font-weight:500;letter-spacing:.03em}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--paper);padding:20px 16px 18px}
+.hero-eye{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.hero-title{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.15;margin-bottom:6px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-detail{font-size:12px;color:rgba(250,248,244,.4);line-height:1.7}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:.5px solid var(--border)}
+.stat{padding:12px 8px 12px 12px;border-right:.5px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'DM Serif Display',serif;font-size:22px;line-height:1;margin-bottom:2px}
+.stat-l{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;font-weight:500}
+
+/* SEARCH */
+.search-bar{padding:10px 12px;background:var(--surface);border-bottom:.5px solid var(--border);display:flex;gap:8px;align-items:center}
+.search-wrap{flex:1;position:relative;display:flex;align-items:center}
+.search-ico{position:absolute;left:10px;width:16px;height:16px;color:var(--ink3);pointer-events:none}
+.search-input{width:100%;font-family:'DM Sans',sans-serif;font-size:15px;padding:10px 10px 10px 34px;border:.5px solid var(--border2);border-radius:10px;background:var(--paper);color:var(--ink);outline:none;-webkit-appearance:none}
+.search-input:focus{border-color:var(--accent)}
+.filter-btn{display:flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 13px;border:.5px solid var(--border2);border-radius:10px;background:var(--paper);color:var(--ink2);cursor:pointer;white-space:nowrap}
+.filter-btn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filter-btn svg{width:14px;height:14px;flex-shrink:0}
+
+/* FILTER DRAWER */
+.filter-drawer{background:var(--surface);border-bottom:.5px solid var(--border);overflow:hidden;max-height:0;transition:max-height .25s ease}
+.filter-drawer.open{max-height:420px}
+.filter-inner{padding:12px;display:flex;flex-direction:column;gap:10px}
+.filter-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.fg select{font-family:'DM Sans',sans-serif;font-size:14px;padding:10px 28px 10px 10px;border:.5px solid var(--border2);border-radius:8px;background:var(--paper);color:var(--ink);outline:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239a9794' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;cursor:pointer}
+.filter-actions{display:flex;gap:8px}
+.btn-clear{flex:1;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:11px;border:.5px solid var(--border2);border-radius:8px;background:transparent;color:var(--ink3);cursor:pointer}
+.btn-apply{flex:2;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:11px;border:none;border-radius:8px;background:var(--ink);color:var(--paper);cursor:pointer}
+
+/* CHIPS */
+.chips{display:flex;gap:6px;padding:8px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:.5px solid var(--border);background:var(--paper)}
+.chips:empty{display:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:5px 10px;border-radius:999px;background:var(--ink);color:var(--paper);cursor:pointer;white-space:nowrap}
+
+/* RESULTS META */
+.meta{padding:8px 14px;font-size:12px;color:var(--ink3);border-bottom:.5px solid var(--border)}
+.meta strong{color:var(--ink);font-weight:500}
+
+/* DAY HEADER */
+.day-hdr{display:flex;align-items:baseline;gap:8px;padding:10px 14px 8px;border-bottom:.5px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:5}
+.day-name{font-family:'DM Serif Display',serif;font-size:15px}
+.day-sub{font-size:12px;color:var(--ink3)}
+.day-ct{font-size:11px;color:var(--ink3);margin-left:auto}
+
+/* ENTRY CARDS */
+.entry-card{display:flex;gap:12px;padding:12px 14px;border-bottom:.5px solid var(--border);align-items:flex-start;transition:background .1s}
+.entry-card:active{background:var(--surface)}
+.entry-card.ours{border-left:3px solid var(--accent);padding-left:11px}
+.time-block{min-width:56px;flex-shrink:0;text-align:right}
+.time-main{font-size:13px;font-weight:500;color:var(--ink);line-height:1.3}
+.time-num{font-size:10px;color:var(--ink3);margin-top:1px}
+.entry-body{flex:1;min-width:0}
+.entry-name{font-size:15px;font-weight:500;color:var(--ink);line-height:1.3;margin-bottom:5px}
+.entry-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.b-jazz{background:var(--jazz-bg);color:var(--jazz)}
+.b-contemporary{background:var(--contemp-bg);color:var(--contemp)}
+.b-lyrical{background:var(--lyrical-bg);color:var(--lyrical)}
+.b-hiphop{background:var(--hiphop-bg);color:var(--hiphop)}
+.b-tap{background:var(--tap-bg);color:var(--tap)}
+.b-musical{background:var(--musical-bg);color:var(--musical)}
+.b-open{background:var(--open-bg);color:var(--open)}
+.b-neu{background:var(--surface);color:var(--ink3)}
+.b-award{background:#FAEEDA;color:#633806}
+.dancers{font-size:12px;color:var(--ink3);line-height:1.5}
+.dancers.hit{color:var(--open)}
+.hi{font-weight:500;color:var(--accent)}
+
+/* SPECIAL ROWS */
+.special{display:flex;gap:12px;padding:9px 14px;border-bottom:.5px solid var(--border);align-items:center}
+.special.award{background:#fffbee}
+.sp-time{min-width:56px;text-align:right;font-size:12px;color:var(--ink3);flex-shrink:0}
+.sp-label{font-size:13px;color:var(--ink3);font-style:italic;display:flex;align-items:center;gap:7px}
+.special.award .sp-label{color:#854F0B;font-style:normal;font-weight:500}
+
+.empty{padding:48px 24px;text-align:center;color:var(--ink3);font-size:14px;line-height:1.8}
+
+/* COMING SOON */
+.coming{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:65vh;padding:2rem;text-align:center}
+.coming-ico{font-size:40px;margin-bottom:14px}
+.coming-title{font-family:'DM Serif Display',serif;font-size:24px;margin-bottom:8px}
+.coming-sub{font-size:14px;color:var(--ink3);line-height:1.7;max-width:280px}
+
+/* DESKTOP */
+@media(min-width:640px){
+  .topbar{padding:0 24px;height:56px;padding-top:0}
+  .topbar-inner{height:56px}
+  .tabbar{display:none}
+  .page{padding-bottom:2rem}
+  .desktop-nav{display:flex}
+  .hero{padding:28px 28px 24px}
+  .hero-title{font-size:34px}
+  .search-bar,.filter-inner,.day-hdr,.entry-card,.special,.chips,.meta{padding-left:24px;padding-right:24px}
+  .stats .stat{padding:14px 12px 14px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">CaRu<em>Entertainment</em></div>
+    <div class="desktop-nav" id="desktopNav">
+      <div class="dn-link active" onclick="showPage('schedule',this)">Schedule</div>
+      <div class="dn-link" onclick="showPage('news',this)">News</div>
+      <div class="dn-link" onclick="showPage('eats',this)">Eats &amp; Stay</div>
+      <div class="dn-link" onclick="showPage('gallery',this)">Gallery</div>
+    </div>
+    <div class="topbar-sub">Monroe Reverb</div>
+  </div>
+</div>
+
+<div class="pages">
+
+  <div class="page active" id="page-schedule">
+    <div class="hero">
+      <div class="hero-title">Reverb Regional<br><em>Monroe, NJ</em></div>
+      <div class="hero-detail">April 24–26, 2026 · Monroe Township High School</div>
+    </div>
+
+    <div class="stats" id="statsEl"></div>
+
+    <div class="search-bar">
+      <div class="search-wrap">
+        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="search-input" id="dancerSearch" type="search" placeholder="Search dancer…" oninput="render()" autocomplete="off" autocorrect="off" spellcheck="false"/>
+      </div>
+      <button class="filter-btn" id="filterBtn" onclick="toggleDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        Filters
+      </button>
+    </div>
+
+    <div class="filter-drawer" id="filterDrawer">
+      <div class="filter-inner">
+        <div class="filter-row">
+          <div class="fg"><label>Day</label>
+            <select id="dayFilter" onchange="render()">
+              <option value="all">All days</option>
+              <option value="04/24">Friday Apr 24</option>
+              <option value="04/25">Saturday Apr 25</option>
+              <option value="04/26">Sunday Apr 26</option>
+            </select>
+          </div>
+          <div class="fg"><label>Age division</label>
+            <select id="ageFilter" onchange="render()">
+              <option value="all">All ages</option>
+              <option value="Petite">Petite</option>
+              <option value="Junior">Junior</option>
+              <option value="Teen">Teen</option>
+              <option value="Senior">Senior</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-row">
+          <div class="fg"><label>Category</label>
+            <select id="catFilter" onchange="render()">
+              <option value="all">All categories</option>
+              <option value="Jazz">Jazz</option>
+              <option value="Contemporary">Contemporary</option>
+              <option value="Lyrical">Lyrical</option>
+              <option value="Hip Hop">Hip Hop</option>
+              <option value="Tap">Tap</option>
+              <option value="Musical Theatre">Musical Theatre</option>
+              <option value="Open">Open</option>
+            </select>
+          </div>
+          <div class="fg"><label>Type</label>
+            <select id="divFilter" onchange="render()">
+              <option value="all">All types</option>
+              <option value="Solo">Solo</option>
+              <option value="Duo/Trio">Duo/Trio</option>
+              <option value="Small Group">Small Group</option>
+              <option value="Large Group">Large Group</option>
+              <option value="Production">Production</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-actions">
+          <button class="btn-clear" onclick="clearFilters()">Clear all</button>
+          <button class="btn-apply" onclick="toggleDrawer()">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="chips" id="chipsEl"></div>
+    <div class="meta" id="metaEl" style="display:none"></div>
+    <div id="listEl"></div>
+  </div>
+
+  <div class="page" id="page-news">
+    <div class="coming"><div class="coming-ico">📣</div><div class="coming-title">Announcements</div><div class="coming-sub">Team news and updates from coaches will live here. Coming soon!</div></div>
+  </div>
+
+  <div class="page" id="page-eats">
+    <div class="coming"><div class="coming-ico">🍕</div><div class="coming-title">Eats &amp; Stay</div><div class="coming-sub">Local restaurants, hotels, and things to do near each venue — ready before nationals!</div></div>
+  </div>
+
+  <div class="page" id="page-gallery">
+    <div class="coming"><div class="coming-ico">📸</div><div class="coming-title">Gallery</div><div class="coming-sub">Competition photos will be shared here after each event.</div></div>
+  </div>
+
+</div>
+
+<div class="tabbar">
+  <div class="tab active" id="tab-schedule" onclick="showPage('schedule',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span class="tab-lbl">Schedule</span>
+  </div>
+  <div class="tab" id="tab-news" onclick="showPage('news',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="tab-lbl">News</span>
+  </div>
+  <div class="tab" id="tab-eats" onclick="showPage('eats',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+    <span class="tab-lbl">Eats &amp; Stay</span>
+  </div>
+  <div class="tab" id="tab-gallery" onclick="showPage('gallery',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span class="tab-lbl">Gallery</span>
+  </div>
+</div>
+
+<script>
+const ROSTER={
+  "Jolene":["Mackenzie DeLuca"],
+  "Tomorrow":["Poppy Sweeney"],
+  "Black & Gold":["Leila Advani"],
+  "Bad":["Kaitlyn Naughton"],
+  "Locomotion":["Leila Advani","Poppy Sweeney","Kaitlyn Naughton"],
+  "Home":["Poppy Sweeney","Kaitlyn Naughton","Leila Advani","Mikayla Irene","Isabelle Marie Breaux","Raelyn Groninger"],
+  "What Are You Waiting For":["Ally Bonder","Emma Bonder","Mackenzie DeLuca","Mackenzie Naughton","Kaitlyn Naughton","Raelyn Groninger","Poppy Sweeney","Makayla Reading","Leila Advani","Mikayla Irene"],
+  "When I Grow Up":["Poppy Sweeney","Kaitlyn Naughton","Leila Advani","Mikayla Irene","Isabelle Marie Breaux"],
+  "Don't You Remember":["Makayla Reading"],
+  "I Have Nothing":["Stella Glospie"],
+  "Under the Sea":["Emma Schmelzer"],
+  "Cold Hearted":["Mackenzie Naughton"],
+  "Smells Like Teen Spirit":["Lia Ziemlinski"],
+  "Don't You Mess Around":["Lia Ziemlinski","Hannah Garber","Mackenzie Naughton"],
+  "To Be Loved":["Ava Charlton","Angelina Gallagher","Sofia Kulp","Austyn Hanley","Skye Bridges","Elizabeth Casciano","Rosemary Vest","Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Mikayla Irene","Angelina Vitadello"],
+  "A Night In Paris":["Sofia Kulp","Austyn Hanley","Ava Charlton","Angelina Gallagher","Rosemary Vest","Tenley Vlasac","Mackenzie Naughton","Kallista Jacobs","Stella Glospie","Angelina Vitadello","Mackenzie DeLuca","Raelyn Groninger","Kaitlyn Naughton","Poppy Sweeney"],
+  "Saturn Return":["Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Makayla Reading","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Elizabeth Casciano"],
+  "Piano Man":["Ally Bonder","Emma Bonder","Poppy Sweeney","Kaitlyn Naughton","Kelsey Steele","Makayla Reading","Raelyn Groninger","Leila Advani","Angelina Vitadello","Mackenzie Naughton"],
+  "Her Way":["Sofia Kulp","Ava Charlton","Angelina Gallagher","Rosemary Vest","Tenley Vlasac","Elizabeth Casciano","Emma Schmelzer","Austyn Hanley"],
+  "Heal":["Angelina Gallagher","Austyn Hanley","Ava Charlton","Sofia Kulp"],
+  "The Accused":["Lia Ziemlinski","Hannah Garber","Mackenzie Naughton","Ally Bonder","Kallista Jacobs"],
+  "Dancing People":["Gia Birchenough","Skye Bridges","Austyn Hanley","Rosemary Vest","Ava Charlton"],
+  "Endangered Species":["Ava Charlton","Sofia Kulp","Austyn Hanley","Kallista Jacobs","Tenley Vlasac"],
+  "The Reading":["Austyn Hanley","Angelina Gallagher","Tenley Vlasac","Rosemary Vest","Skye Bridges","Ava Charlton","Gia Birchenough"],
+  "Bassline":["Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Emma Bonder","Ally Bonder","Kelsey Steele"],
+  "Handle With Care":["Sofia Kulp","Ava Charlton","Angelina Gallagher","Gia Birchenough","Rosemary Vest","Tenley Vlasac","Elizabeth Casciano","Emma Schmelzer","Skye Bridges"],
+  "MonStars of Mayhem":["All CaRu Crew Members"],
+  "Bad Company":["Rosemary Vest"],
+  "That's Life":["Tenley Vlasac"],
+  "Dangerous":["Kallista Jacobs"],
+  "Mannequin":["Austyn Hanley"],
+  "The Winner Takes It All":["Sofia Kulp"],
+  "Unforgettable":["Ava Charlton"],
+  "Cosmic Love":["Kallista Jacobs","Stella Glospie","Kelsey Steele"],
+  "The Head vs The Heart":["Sofia Kulp","Ava Charlton"]
+};
+
+const ENTRIES=[
+  {date:"04/24",time:"7:39 PM",num:4,title:"Unforgettable",level:"Advanced",div:"Solo",cat:"Open",age:"Senior"},
+  {date:"04/24",time:"7:54 PM",num:9,title:"Mannequin",level:"Advanced",div:"Solo",cat:"Jazz",age:"Senior"},
+  {date:"04/24",time:"8:00 PM",num:11,title:"Dangerous",level:"Advanced",div:"Solo",cat:"Jazz",age:"Senior"},
+  {date:"04/24",time:"9:12 PM",num:35,title:"The Winner Takes It All",level:"Advanced",div:"Solo",cat:"Lyrical",age:"Senior"},
+  {date:"04/24",time:"9:33 PM",num:42,title:"The Head vs The Heart",level:"Advanced",div:"Duo/Trio",cat:"Contemporary",age:"Senior"},
+  {date:"04/24",time:"10:02 PM",type:"award",label:"Friday Session 1 Awards"},
+  {date:"04/25",time:"7:39 AM",num:54,title:"Black & Gold",level:"Advanced",div:"Solo",cat:"Jazz",age:"Junior"},
+  {date:"04/25",time:"8:00 AM",num:61,title:"Bad",level:"Advanced",div:"Solo",cat:"Jazz",age:"Junior"},
+  {date:"04/25",time:"9:31 AM",num:91,title:"Like Jennie",level:"Novice",div:"Small Group",cat:"Hip Hop",age:"Petite"},
+  {date:"04/25",time:"9:59 AM",num:99,title:"Burning Love",level:"Novice",div:"Small Group",cat:"Musical Theatre",age:"Petite"},
+  {date:"04/25",time:"10:02 AM",type:"break",label:"Judges break"},
+  {date:"04/25",time:"10:28 AM",num:104,title:"When the Sun Goes Down",level:"Novice",div:"Small Group",cat:"Contemporary",age:"Petite"},
+  {date:"04/25",time:"11:05 AM",num:115,title:"Me and My Girls",level:"Novice",div:"Small Group",cat:"Jazz",age:"Petite"},
+  {date:"04/25",time:"11:25 AM",num:121,title:"Locomotion",level:"Advanced",div:"Duo/Trio",cat:"Jazz",age:"Petite"},
+  {date:"04/25",time:"11:47 AM",num:128,title:"Tomorrow",level:"Advanced",div:"Solo",cat:"Lyrical",age:"Petite"},
+  {date:"04/25",time:"11:53 AM",num:130,title:"Fabulous",level:"Novice",div:"Solo",cat:"Musical Theatre",age:"Petite"},
+  {date:"04/25",time:"12:06 PM",num:134,title:"Endgame",level:"Novice",div:"Solo",cat:"Contemporary",age:"Junior"},
+  {date:"04/25",time:"12:09 PM",num:302,title:"Bad Dream",level:"Novice",div:"Solo",cat:"Contemporary",age:"Junior"},
+  {date:"04/25",time:"12:27 PM",num:140,title:"Tell Me Something",level:"Novice",div:"Duo/Trio",cat:"Jazz",age:"Petite"},
+  {date:"04/25",time:"12:34 PM",type:"award",label:"Saturday Session 1 Awards"},
+  {date:"04/25",time:"2:31 PM",num:159,title:"Smells Like Teen Spirit",level:"Advanced",div:"Solo",cat:"Open",age:"Teen"},
+  {date:"04/25",time:"3:09 PM",type:"break",label:"Judges break"},
+  {date:"04/25",time:"3:46 PM",num:179,title:"Under the Sea",level:"Advanced",div:"Solo",cat:"Contemporary",age:"Teen"},
+  {date:"04/25",time:"3:52 PM",num:181,title:"Bad Company",level:"Advanced",div:"Solo",cat:"Contemporary",age:"Teen"},
+  {date:"04/25",time:"4:10 PM",num:187,title:"Cold Hearted",level:"Advanced",div:"Solo",cat:"Jazz",age:"Teen"},
+  {date:"04/25",time:"4:16 PM",num:189,title:"That's Life",level:"Advanced",div:"Solo",cat:"Jazz",age:"Teen"},
+  {date:"04/25",time:"5:39 PM",num:212,title:"MonStars of Mayhem",level:"Advanced",div:"Production",cat:"Open",age:"13 and Over"},
+  {date:"04/25",time:"5:49 PM",type:"award",label:"Saturday Session 2 Awards"},
+  {date:"04/25",time:"6:57 PM",num:215,title:"Endangered Species",level:"Advanced",div:"Small Group",cat:"Jazz",age:"Senior"},
+  {date:"04/25",time:"7:07 PM",num:218,title:"Jolene",level:"Intermediate",div:"Solo",cat:"Tap",age:"Teen"},
+  {date:"04/25",time:"7:23 PM",num:223,title:"I Have Nothing",level:"Intermediate",div:"Solo",cat:"Lyrical",age:"Teen"},
+  {date:"04/25",time:"7:29 PM",num:225,title:"Don't You Remember",level:"Intermediate",div:"Solo",cat:"Lyrical",age:"Teen"},
+  {date:"04/25",time:"7:36 PM",num:227,title:"Don't You Mess Around",level:"Advanced",div:"Duo/Trio",cat:"Jazz",age:"Teen"},
+  {date:"04/25",time:"7:53 PM",num:232,title:"A Night In Paris",level:"Advanced",div:"Large Group",cat:"Jazz",age:"Teen"},
+  {date:"04/25",time:"8:11 PM",num:237,title:"Heal",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Senior"},
+  {date:"04/25",time:"8:14 PM",type:"break",label:"Judges break"},
+  {date:"04/25",time:"8:28 PM",num:311,title:"Saturn Return",level:"Advanced",div:"Large Group",cat:"Contemporary",age:"Teen"},
+  {date:"04/25",time:"8:36 PM",num:240,title:"To Be Loved",level:"Advanced",div:"Large Group",cat:"Contemporary",age:"Teen"},
+  {date:"04/25",time:"8:57 PM",num:246,title:"Cosmic Love",level:"Intermediate",div:"Duo/Trio",cat:"Contemporary",age:"Teen"},
+  {date:"04/25",time:"9:00 PM",type:"break",label:"Judges break"},
+  {date:"04/25",time:"10:18 PM",type:"award",label:"Saturday Session 3 Awards"},
+  {date:"04/26",time:"7:33 AM",num:264,title:"Dancing People",level:"Advanced",div:"Small Group",cat:"Hip Hop",age:"Teen"},
+  {date:"04/26",time:"8:08 AM",num:275,title:"Bassline",level:"Advanced",div:"Small Group",cat:"Open",age:"Teen"},
+  {date:"04/26",time:"8:12 AM",num:276,title:"Handle With Care",level:"Advanced",div:"Small Group",cat:"Open",age:"Teen"},
+  {date:"04/26",time:"8:25 AM",num:280,title:"Piano Man",level:"Advanced",div:"Large Group",cat:"Open",age:"Junior"},
+  {date:"04/26",time:"8:44 AM",num:286,title:"Wonderland",level:"Intermediate",div:"Solo",cat:"Lyrical",age:"Petite"},
+  {date:"04/26",time:"8:51 AM",num:288,title:"When I Grow Up",level:"Advanced",div:"Small Group",cat:"Jazz",age:"Junior"},
+  {date:"04/26",time:"9:12 AM",num:294,title:"The Reading",level:"Advanced",div:"Small Group",cat:"Jazz",age:"Teen"},
+  {date:"04/26",time:"9:26 AM",num:298,title:"What Are You Waiting For",level:"Advanced",div:"Large Group",cat:"Jazz",age:"Junior"},
+  {date:"04/26",time:"9:47 AM",num:304,title:"Home",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Junior"},
+  {date:"04/26",time:"9:54 AM",num:306,title:"The Accused",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Teen"},
+  {date:"04/26",time:"9:58 AM",num:307,title:"Her Way",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Teen"},
+  {date:"04/26",time:"10:23 AM",num:315,title:"Heaven is a Place",level:"Intermediate",div:"Duo/Trio",cat:"Lyrical",age:"Petite"},
+  {date:"04/26",time:"10:26 AM",num:316,title:"Rollin",level:"Intermediate",div:"Solo",cat:"Jazz",age:"Junior"},
+  {date:"04/26",time:"12:02 PM",type:"award",label:"Sunday Session 1 Awards"}
+];
+
+const ALL_DANCERS=[...new Set(Object.values(ROSTER).flat().filter(d=>d!=="All CaRu Crew Members"))].sort();
+const CC={Jazz:"b-jazz",Contemporary:"b-contemporary",Lyrical:"b-lyrical","Hip Hop":"b-hiphop",Tap:"b-tap","Musical Theatre":"b-musical",Open:"b-open"};
+const DL={"04/24":"Friday","04/25":"Saturday","04/26":"Sunday"};
+const DD={"04/24":"April 24","04/25":"April 25","04/26":"April 26"};
+
+function getRoster(t){for(const[k,v]of Object.entries(ROSTER))if(k.toLowerCase()===t.toLowerCase())return v;return null}
+function isOurs(e){return!e.type&&!!getRoster(e.title)}
+
+let drawerOpen=false;
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('filterDrawer').classList.toggle('open',drawerOpen)}
+
+function getF(){return{day:document.getElementById('dayFilter').value,cat:document.getElementById('catFilter').value,age:document.getElementById('ageFilter').value,div:document.getElementById('divFilter').value,sq:(document.getElementById('dancerSearch').value||'').trim().toLowerCase()}}
+
+function render(){
+  const f=getF();
+  const active=[f.day!=='all',f.cat!=='all',f.age!=='all',f.div!=='all',!!f.sq].filter(Boolean).length;
+
+  // filter btn
+  const btn=document.getElementById('filterBtn');
+  btn.classList.toggle('on',active>0);
+  btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg> Filters${active?` (${active})`:''}`;
+
+  // chips
+  const chipDefs=[];
+  if(f.sq) chipDefs.push({t:'Dancer: '+f.sq,c:()=>{document.getElementById('dancerSearch').value='';render()}});
+  if(f.day!=='all') chipDefs.push({t:{['04/24']:'Fri Apr 24',['04/25']:'Sat Apr 25',['04/26']:'Sun Apr 26'}[f.day],c:()=>{document.getElementById('dayFilter').value='all';render()}});
+  if(f.cat!=='all') chipDefs.push({t:f.cat,c:()=>{document.getElementById('catFilter').value='all';render()}});
+  if(f.age!=='all') chipDefs.push({t:f.age,c:()=>{document.getElementById('ageFilter').value='all';render()}});
+  if(f.div!=='all') chipDefs.push({t:f.div,c:()=>{document.getElementById('divFilter').value='all';render()}});
+  window._cc=chipDefs;
+  document.getElementById('chipsEl').innerHTML=chipDefs.map((c,i)=>`<div class="chip" onclick="_cc[${i}].c()"><span>${c.t}</span><span style="opacity:.5;margin-left:2px">×</span></div>`).join('');
+
+  let html='',total=0;
+  for(const d of["04/24","04/25","04/26"]){
+    if(f.day!=='all'&&f.day!==d) continue;
+    const rows=ENTRIES.filter(e=>{
+      if(e.date!==d) return false;
+      if(e.type) return f.cat==='all'&&f.age==='all'&&f.div==='all'&&!f.sq;
+      if(f.cat!=='all'&&e.cat!==f.cat) return false;
+      if(f.age!=='all'&&e.age!==f.age) return false;
+      if(f.div!=='all'&&e.div!==f.div) return false;
+      if(f.sq){const r=getRoster(e.title);if(!r||!r.some(n=>n.toLowerCase().includes(f.sq))) return false;}
+      return true;
+    });
+    const real=rows.filter(e=>!e.type);
+    if(!real.length) continue;
+    total+=real.length;
+    html+=`<div class="day-hdr"><span class="day-name">${DL[d]}</span><span class="day-sub">${DD[d]}</span><span class="day-ct">${real.length} entries</span></div>`;
+    for(const e of rows){
+      if(e.type==='break'){
+        html+=`<div class="special"><div class="sp-time">${e.time}</div><div class="sp-label"><span class="badge b-neu">Break</span>${e.label}</div></div>`;
+      } else if(e.type==='award'){
+        html+=`<div class="special award"><div class="sp-time">${e.time}</div><div class="sp-label"><span class="badge b-award">Awards</span>${e.label}</div></div>`;
+      } else {
+        const r=getRoster(e.title);
+        let dh='';
+        if(r){const hit=f.sq&&r.some(n=>n.toLowerCase().includes(f.sq));const pts=r.map(n=>f.sq&&n.toLowerCase().includes(f.sq)?`<span class="hi">${n}</span>`:n);dh=`<div class="dancers${hit?' hit':''}">${pts.join(', ')}</div>`;}
+        html+=`<div class="entry-card">
+          <div class="time-block"><div class="time-main">${e.time}</div><div class="time-num">#${e.num}</div></div>
+          <div class="entry-body">
+            <div class="entry-name">${e.title}</div>
+            <div class="entry-tags"><span class="badge ${CC[e.cat]||'b-open'}">${e.cat}</span><span class="badge b-neu">${e.div}</span><span class="badge b-neu">${e.age}</span><span class="badge b-neu">${e.level}</span></div>
+            ${dh}
+          </div>
+        </div>`;
+      }
+    }
+  }
+  if(!html) html=`<div class="empty">No entries match your filters.<br>Try adjusting them above.</div>`;
+  document.getElementById('listEl').innerHTML=html;
+
+  const meta=document.getElementById('metaEl');
+  if(active>0){meta.style.display='';meta.innerHTML=`Showing <strong>${total}</strong> ${total===1?'entry':'entries'}`;}
+  else meta.style.display='none';
+
+  // stats
+  const tot=ENTRIES.filter(e=>!e.type).length;
+  document.getElementById('statsEl').innerHTML=`<div class="stat"><div class="stat-n">${tot}</div><div class="stat-l">Entries</div></div><div class="stat"><div class="stat-n">${ALL_DANCERS.length}</div><div class="stat-l">Dancers</div></div><div class="stat"><div class="stat-n">3</div><div class="stat-l">Days</div></div><div class="stat"><div class="stat-n">Apr 24</div><div class="stat-l">Starts</div></div>`;
+}
+
+function clearFilters(){
+  document.getElementById('dancerSearch').value='';
+  ['dayFilter','catFilter','ageFilter','divFilter'].forEach(id=>document.getElementById(id).value='all');
+  render();
+}
+
+function showPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab,.dn-link').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('tab-'+id)?.classList.add('active');
+  if(el?.classList?.contains('dn-link')) el.classList.add('active');
+  if(drawerOpen&&id!=='schedule'){drawerOpen=false;document.getElementById('filterDrawer').classList.remove('open');}
+}
+
+render();
+</script>
+</body>
+</html>
