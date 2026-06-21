@@ -5,36 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Dance Team</title>
+<title>CaRu Nationals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #0f0e0d; --ink2: #4a4845; --ink3: #9a9794;
-  --paper: #faf8f4; --surface: #f2efe9;
-  --border: rgba(15,14,13,0.09); --border2: rgba(15,14,13,0.16);
-  --accent: #c8403a; --gold: #e8c547;
-  --jazz: #3C3489; --jazz-bg: #EEEDFE;
-  --contemp: #085041; --contemp-bg: #E1F5EE;
-  --lyrical: #72243E; --lyrical-bg: #FBEAF0;
-  --hiphop: #712B13; --hiphop-bg: #FAECE7;
-  --tap: #444441; --tap-bg: #F1EFE8;
-  --musical: #633806; --musical-bg: #FAEEDA;
-  --open: #0C447C; --open-bg: #E6F1FB;
-  --tab-h: 64px;
-  --sat: env(safe-area-inset-top,0px);
-  --sab: env(safe-area-inset-bottom,0px);
+  --ink:#0f0e0d;--ink2:#4a4845;--ink3:#9a9794;
+  --paper:#faf8f4;--surface:#f2efe9;
+  --border:rgba(15,14,13,0.09);--border2:rgba(15,14,13,0.16);
+  --accent:#c8403a;--gold:#e8c547;
+  --jazz:#3C3489;--jazz-bg:#EEEDFE;
+  --contemp:#085041;--contemp-bg:#E1F5EE;
+  --lyrical:#72243E;--lyrical-bg:#FBEAF0;
+  --hiphop:#712B13;--hiphop-bg:#FAECE7;
+  --tap:#444441;--tap-bg:#F1EFE8;
+  --open:#0C447C;--open-bg:#E6F1FB;
+  --prod:#4a1a6b;--prod-bg:#f0e8fb;
+  --sat:env(safe-area-inset-top,0px);
+  --sab:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;overscroll-behavior:none}
 
 /* TOP BAR */
-.topbar{flex-shrink:0;background:var(--ink);display:flex;align-items:flex-end;justify-content:space-between;padding:0 16px 0;padding-top:var(--sat);height:calc(52px + var(--sat));border-bottom:2px solid rgba(255,255,255,0.7);z-index:50}
+.topbar{flex-shrink:0;background:var(--ink);display:flex;align-items:flex-end;padding:0 16px;padding-top:var(--sat);height:calc(52px + var(--sat));border-bottom:2px solid rgba(255,255,255,0.7);z-index:50}
 .topbar-inner{display:flex;align-items:center;justify-content:space-between;width:100%;height:52px}
 .brand{font-family:'DM Serif Display',serif;font-size:18px;color:var(--paper)}
 .brand em{font-style:italic;color:var(--gold)}
-.desktop-nav{display:none !important;gap:0}
+.desktop-nav{display:none;gap:0}
 .dn-link{font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:rgba(250,248,244,.4);padding:0 14px;height:52px;display:flex;align-items:center;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;user-select:none}
 .dn-link:hover{color:rgba(250,248,244,.8)}
 .dn-link.active{color:var(--gold);border-color:var(--gold)}
@@ -46,10 +45,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
 .page.active{display:block}
 
 /* BOTTOM TABS */
-.tabbar{display:none !important;height:calc(var(--tab-h) + var(--sab));padding-bottom:var(--sab);z-index:50}
+.tabbar{flex-shrink:0;background:var(--ink);border-top:.5px solid rgba(255,255,255,.08);display:flex;height:calc(60px + var(--sab));padding-bottom:var(--sab);z-index:50}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:rgba(250,248,244,.3);transition:color .15s;padding-top:4px;user-select:none}
 .tab.active{color:var(--gold)}
-.tab svg{width:22px;height:22px}
+.tab svg{width:20px;height:20px}
 .tab-lbl{font-size:10px;font-weight:500;letter-spacing:.03em}
 
 /* HERO */
@@ -57,14 +56,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
 .hero-eye{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .hero-title{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.15;margin-bottom:6px}
 .hero-title em{font-style:italic;color:var(--gold)}
-.hero-detail{font-size:12px;color:rgba(250,248,244,.4);line-height:1.7}
-
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:.5px solid var(--border)}
-.stat{padding:12px 8px 12px 12px;border-right:.5px solid var(--border)}
-.stat:last-child{border-right:none}
-.stat-n{font-family:'DM Serif Display',serif;font-size:22px;line-height:1;margin-bottom:2px}
-.stat-l{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;font-weight:500}
+.hero-detail{font-size:12px;color:rgba(250,248,244,.4);line-height:1.8}
+.hero-note{margin-top:10px;font-size:12px;color:rgba(232,197,71,.9);line-height:1.6;padding:8px 10px;border:1px solid rgba(232,197,71,.3);border-radius:8px}
 
 /* SEARCH */
 .search-bar{padding:10px 12px;background:var(--surface);border-bottom:.5px solid var(--border);display:flex;gap:8px;align-items:center}
@@ -93,8 +86,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
 .chips:empty{display:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex-shrink:0;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:5px 10px;border-radius:999px;background:var(--ink);color:var(--paper);cursor:pointer;white-space:nowrap}
-
-/* RESULTS META */
 .meta{padding:8px 14px;font-size:12px;color:var(--ink3);border-bottom:.5px solid var(--border)}
 .meta strong{color:var(--ink);font-weight:500}
 
@@ -107,10 +98,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
 /* ENTRY CARDS */
 .entry-card{display:flex;gap:12px;padding:12px 14px;border-bottom:.5px solid var(--border);align-items:flex-start;transition:background .1s}
 .entry-card:active{background:var(--surface)}
-.entry-card.ours{border-left:3px solid var(--accent);padding-left:11px}
-.time-block{min-width:56px;flex-shrink:0;text-align:right}
+.time-block{min-width:62px;flex-shrink:0;text-align:right}
 .time-main{font-size:13px;font-weight:500;color:var(--ink);line-height:1.3}
 .time-num{font-size:10px;color:var(--ink3);margin-top:1px}
+.time-room{font-size:10px;color:var(--ink3);margin-top:1px}
 .entry-body{flex:1;min-width:0}
 .entry-name{font-size:15px;font-weight:500;color:var(--ink);line-height:1.3;margin-bottom:5px}
 .entry-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px}
@@ -120,10 +111,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
 .b-lyrical{background:var(--lyrical-bg);color:var(--lyrical)}
 .b-hiphop{background:var(--hiphop-bg);color:var(--hiphop)}
 .b-tap{background:var(--tap-bg);color:var(--tap)}
-.b-musical{background:var(--musical-bg);color:var(--musical)}
 .b-open{background:var(--open-bg);color:var(--open)}
+.b-production{background:var(--prod-bg);color:var(--prod)}
 .b-neu{background:var(--surface);color:var(--ink3)}
 .b-award{background:#FAEEDA;color:#633806}
+.b-advanced{background:#e8f4e8;color:#1a5c1a}
 .dancers{font-size:12px;color:var(--ink3);line-height:1.5}
 .dancers.hit{color:var(--open)}
 .hi{font-weight:500;color:var(--accent)}
@@ -131,17 +123,54 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
 /* SPECIAL ROWS */
 .special{display:flex;gap:12px;padding:9px 14px;border-bottom:.5px solid var(--border);align-items:center}
 .special.award{background:#fffbee}
-.sp-time{min-width:56px;text-align:right;font-size:12px;color:var(--ink3);flex-shrink:0}
+.special.finals{background:#f0e8fb}
+.sp-time{min-width:62px;text-align:right;font-size:12px;color:var(--ink3);flex-shrink:0}
 .sp-label{font-size:13px;color:var(--ink3);font-style:italic;display:flex;align-items:center;gap:7px}
 .special.award .sp-label{color:#854F0B;font-style:normal;font-weight:500}
-
+.special.finals .sp-label{color:var(--prod);font-style:normal;font-weight:500}
+.friday-banner{background:linear-gradient(135deg,#1a0a2e,#2d1060);color:var(--paper);padding:16px 14px;border-bottom:.5px solid var(--border)}
+.friday-title{font-family:'DM Serif Display',serif;font-size:18px;color:var(--gold);margin-bottom:4px}
+.friday-sub{font-size:12px;color:rgba(250,248,244,.5);line-height:1.6}
 .empty{padding:48px 24px;text-align:center;color:var(--ink3);font-size:14px;line-height:1.8}
 
-/* COMING SOON */
-.coming{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:65vh;padding:2rem;text-align:center}
-.coming-ico{font-size:40px;margin-bottom:14px}
-.coming-title{font-family:'DM Serif Display',serif;font-size:24px;margin-bottom:8px}
-.coming-sub{font-size:14px;color:var(--ink3);line-height:1.7;max-width:280px}
+/* ── NEWS / INFO PAGES ── */
+.info-hero{background:var(--ink);color:var(--paper);padding:20px 16px 18px}
+.info-hero-eye{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.info-hero-title{font-family:'DM Serif Display',serif;font-size:24px;line-height:1.2}
+.info-section{padding:16px 16px 0}
+.info-section:last-child{padding-bottom:16px}
+.info-section-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border2)}
+.info-card{background:var(--paper);border:.5px solid var(--border2);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.info-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.info-card-body{font-size:13px;color:var(--ink2);line-height:1.65}
+.info-card-body strong{font-weight:500;color:var(--ink)}
+.info-pill{display:inline-block;font-size:11px;font-weight:500;padding:3px 8px;border-radius:999px;background:var(--surface);color:var(--ink2);margin:2px 2px 6px 0}
+.info-pill.gold{background:#fffbee;color:#854F0B}
+.info-pill.purple{background:var(--prod-bg);color:var(--prod)}
+.info-pill.green{background:var(--contemp-bg);color:var(--contemp)}
+.award-scale{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.award-chip{padding:8px 10px;border-radius:8px;font-size:12px;font-weight:500;text-align:center}
+.aw-crystal{background:#e8f4fb;color:#0C447C}
+.aw-dplat{background:#f3f3f3;color:#333}
+.aw-plat{background:#f5f0ff;color:#4a1a6b}
+.aw-gold{background:#fffbee;color:#854F0B}
+.aw-silver{background:#f5f5f5;color:#555}
+
+/* ── EATS PAGE ── */
+.eats-hero{background:var(--ink);color:var(--paper);padding:20px 16px 18px}
+.place-card{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-bottom:.5px solid var(--border);background:var(--paper)}
+.place-card:active{background:var(--surface)}
+.place-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.place-name{font-size:15px;font-weight:500;color:var(--ink)}
+.place-price{font-size:12px;color:var(--ink3);flex-shrink:0}
+.place-meta{font-size:12px;color:var(--ink3)}
+.place-desc{font-size:13px;color:var(--ink2);line-height:1.5;margin-top:2px}
+.place-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--open);margin-top:6px;text-decoration:none}
+.place-badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 6px;border-radius:4px;margin-right:4px;background:var(--surface);color:var(--ink3)}
+.place-badge.onsite{background:var(--contemp-bg);color:var(--contemp)}
+.place-badge.nearby{background:var(--open-bg);color:var(--open)}
+.place-badge.quick{background:var(--jazz-bg);color:var(--jazz)}
+.place-badge.hotel{background:var(--prod-bg);color:var(--prod)}
 
 /* DESKTOP */
 @media(min-width:640px){
@@ -150,10 +179,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
   .tabbar{display:none}
   .page{padding-bottom:2rem}
   .desktop-nav{display:flex}
-  .hero{padding:28px 28px 24px}
-  .hero-title{font-size:34px}
-  .search-bar,.filter-inner,.day-hdr,.entry-card,.special,.chips,.meta{padding-left:24px;padding-right:24px}
-  .stats .stat{padding:14px 12px 14px 20px}
+  .hero,.info-hero,.eats-hero{padding:28px 28px 24px}
+  .hero-title,.info-hero-title{font-size:34px}
+  .search-bar,.filter-inner,.day-hdr,.entry-card,.special,.chips,.meta,.friday-banner,.info-section,.place-card{padding-left:24px;padding-right:24px}
 }
 </style>
 </head>
@@ -166,104 +194,451 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
       <div class="dn-link active" onclick="showPage('schedule',this)">Schedule</div>
       <div class="dn-link" onclick="showPage('news',this)">News</div>
       <div class="dn-link" onclick="showPage('eats',this)">Eats &amp; Stay</div>
-      <div class="dn-link" onclick="showPage('gallery',this)">Gallery</div>
+      <div class="dn-link" onclick="showPage('rules',this)">Rules</div>
     </div>
-    <div class="topbar-sub">Monroe Reverb</div>
+    <div class="topbar-sub">Nationals 2026</div>
   </div>
 </div>
 
 <div class="pages">
 
-  <div class="page active" id="page-schedule">
-    <div class="hero">
-      <div class="hero-title">Reverb Regional<br><em>Monroe, NJ</em></div>
-      <div class="hero-detail">April 24–26, 2026 · Monroe Township High School</div>
+<!-- ══ SCHEDULE ══ -->
+<div class="page active" id="page-schedule">
+  <div class="hero">
+    <div class="hero-eye">Showstoppers · North East Finals</div>
+    <div class="hero-title">Mashantucket, CT<br><em>Nationals</em></div>
+    <div class="hero-detail">June 23–26, 2026 · Foxwoods Resort<br>350 Trolley Line Blvd · Mashantucket, CT 06338</div>
+    <div class="hero-note">⏰ Arrive <strong>2 hours before</strong> your listed time &nbsp;·&nbsp; 👕 Wear CaRu Nationals shirt on <strong>Thursday June 25</strong> for ProductionMania</div>
+  </div>
+  <div class="search-bar">
+    <div class="search-wrap">
+      <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="search-input" id="dancerSearch" type="search" placeholder="Search dancer…" oninput="render()" autocomplete="off" autocorrect="off" spellcheck="false"/>
     </div>
-
-    <div class="stats" id="statsEl"></div>
-
-    <div class="search-bar">
-      <div class="search-wrap">
-        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="search-input" id="dancerSearch" type="search" placeholder="Search dancer…" oninput="render()" autocomplete="off" autocorrect="off" spellcheck="false"/>
-      </div>
-      <button class="filter-btn" id="filterBtn" onclick="toggleDrawer()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
-        Filters
-      </button>
-    </div>
-
-    <div class="filter-drawer" id="filterDrawer">
-      <div class="filter-inner">
-        <div class="filter-row">
-          <div class="fg"><label>Day</label>
-            <select id="dayFilter" onchange="render()">
-              <option value="all">All days</option>
-              <option value="04/24">Friday Apr 24</option>
-              <option value="04/25">Saturday Apr 25</option>
-              <option value="04/26">Sunday Apr 26</option>
-            </select>
-          </div>
-          <div class="fg"><label>Age division</label>
-            <select id="ageFilter" onchange="render()">
-              <option value="all">All ages</option>
-              <option value="Petite">Petite</option>
-              <option value="Junior">Junior</option>
-              <option value="Teen">Teen</option>
-              <option value="Senior">Senior</option>
-            </select>
-          </div>
+    <button class="filter-btn" id="filterBtn" onclick="toggleDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+      Filters
+    </button>
+  </div>
+  <div class="filter-drawer" id="filterDrawer">
+    <div class="filter-inner">
+      <div class="filter-row">
+        <div class="fg"><label>Day</label>
+          <select id="dayFilter" onchange="render()">
+            <option value="all">All days</option>
+            <option value="06/23">Tuesday Jun 23</option>
+            <option value="06/24">Wednesday Jun 24</option>
+            <option value="06/25">Thursday Jun 25</option>
+            <option value="06/26">Friday Jun 26</option>
+          </select>
         </div>
-        <div class="filter-row">
-          <div class="fg"><label>Category</label>
-            <select id="catFilter" onchange="render()">
-              <option value="all">All categories</option>
-              <option value="Jazz">Jazz</option>
-              <option value="Contemporary">Contemporary</option>
-              <option value="Lyrical">Lyrical</option>
-              <option value="Hip Hop">Hip Hop</option>
-              <option value="Tap">Tap</option>
-              <option value="Musical Theatre">Musical Theatre</option>
-              <option value="Open">Open</option>
-            </select>
-          </div>
-          <div class="fg"><label>Type</label>
-            <select id="divFilter" onchange="render()">
-              <option value="all">All types</option>
-              <option value="Solo">Solo</option>
-              <option value="Duo/Trio">Duo/Trio</option>
-              <option value="Small Group">Small Group</option>
-              <option value="Large Group">Large Group</option>
-              <option value="Production">Production</option>
-            </select>
-          </div>
-        </div>
-        <div class="filter-actions">
-          <button class="btn-clear" onclick="clearFilters()">Clear all</button>
-          <button class="btn-apply" onclick="toggleDrawer()">Done</button>
+        <div class="fg"><label>Age bracket</label>
+          <select id="ageFilter" onchange="render()">
+            <option value="all">All ages</option>
+            <option value="Mini">Mini (8 &amp; under)</option>
+            <option value="Junior">Junior (9–11)</option>
+            <option value="Teen">Teen (12–14)</option>
+            <option value="Senior">Senior (15–19)</option>
+          </select>
         </div>
       </div>
+      <div class="filter-row">
+        <div class="fg"><label>Category</label>
+          <select id="catFilter" onchange="render()">
+            <option value="all">All categories</option>
+            <option value="Jazz">Jazz</option>
+            <option value="Contemporary">Contemporary</option>
+            <option value="Lyrical Jazz">Lyrical Jazz</option>
+            <option value="Hip Hop">Hip Hop</option>
+            <option value="Tap">Tap</option>
+            <option value="Open">Open</option>
+            <option value="Production">Production</option>
+          </select>
+        </div>
+        <div class="fg"><label>Type</label>
+          <select id="divFilter" onchange="render()">
+            <option value="all">All types</option>
+            <option value="Solo">Solo</option>
+            <option value="Duo/Trio">Duo/Trio</option>
+            <option value="Small Group">Small Group</option>
+            <option value="Large Group">Large Group</option>
+            <option value="Production">Production</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn-clear" onclick="clearFilters()">Clear all</button>
+        <button class="btn-apply" onclick="toggleDrawer()">Done</button>
+      </div>
     </div>
-
-    <div class="chips" id="chipsEl"></div>
-    <div class="meta" id="metaEl" style="display:none"></div>
-    <div id="listEl"></div>
   </div>
-
-  <div class="page" id="page-news">
-    <div class="coming"><div class="coming-ico">📣</div><div class="coming-title">Announcements</div><div class="coming-sub">Team news and updates from coaches will live here. Coming soon!</div></div>
-  </div>
-
-  <div class="page" id="page-eats">
-    <div class="coming"><div class="coming-ico">🍕</div><div class="coming-title">Eats &amp; Stay</div><div class="coming-sub">Local restaurants, hotels, and things to do near each venue — ready before nationals!</div></div>
-  </div>
-
-  <div class="page" id="page-gallery">
-    <div class="coming"><div class="coming-ico">📸</div><div class="coming-title">Gallery</div><div class="coming-sub">Competition photos will be shared here after each event.</div></div>
-  </div>
-
+  <div class="chips" id="chipsEl"></div>
+  <div class="meta" id="metaEl" style="display:none"></div>
+  <div id="listEl"></div>
 </div>
 
+<!-- ══ NEWS ══ -->
+<div class="page" id="page-news">
+  <div class="info-hero">
+    <div class="info-hero-eye">From the CaRu Faculty</div>
+    <div class="info-hero-title">Nationals Info &amp; Updates</div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">📍 Getting There</div>
+    <div class="info-card">
+      <div class="info-card-title">Venue &amp; Arrival</div>
+      <div class="info-card-body"><strong>Foxwoods Resort Casino</strong><br>350 Trolley Line Blvd, Mashantucket, CT 06338<br><br>Plan to arrive <strong>2 hours before</strong> your listed performance time. Keep an eye on the schedule for your dancer's exact times.</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">📸 Media Package</div>
+    <div class="info-card">
+      <div class="info-card-body">Showstoppers offers media at <strong>$16/video</strong> or <strong>$16/photo</strong> per routine, or a combo for <strong>$29/routine</strong>.<br><br>CaRu is offering an <strong>all-inclusive package for $25/dancer</strong> — covering photos and videos for every routine. To participate, send $25 via Venmo to <strong>@Cassie-RussoSweeney</strong> with the note: <em>"Dancer Name – Media"</em></div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">👕 T-Shirt Day</div>
+    <div class="info-card">
+      <div class="info-card-body">Wear your <strong>CaRu Nationals shirt on Thursday, June 25</strong> — that's the day MonStars of Mayhem competes in ProductionMania!</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🎉 Team Bonding — Thursday June 25</div>
+    <div class="info-card">
+      <div class="info-card-body">Following the <strong>12:50 PM awards ceremony</strong> on Thursday, the team will gather for a group photo and then head out for a sweet treat (Dutch-style!). Meeting time and location will be confirmed once we arrive at Foxwoods.<br><br><strong>Suggested attire:</strong> sundresses, rompers, wedges, sandals</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🏅 How Awards Work</div>
+    <div class="info-card">
+      <div class="info-card-title">Leading vs. Top Ceremonies</div>
+      <div class="info-card-body">You'll notice both <strong>"Leading"</strong> and <strong>"Top"</strong> award ceremonies throughout the day. During <em>Leading</em> ceremonies, high-scoring entries are recognized and may be called back to a future <em>Top</em> ceremony where final Top 10 placements are announced.<br><br>Plan your day around the possibility of returning for additional ceremonies — you may be called back!</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Award Levels</div>
+      <div class="award-scale">
+        <div class="award-chip aw-crystal">⭐ Crystal<br><small>Competitive only · Highest</small></div>
+        <div class="award-chip aw-dplat">Double Platinum</div>
+        <div class="award-chip aw-plat">Platinum</div>
+        <div class="award-chip aw-gold">Gold</div>
+        <div class="award-chip aw-silver">Silver</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Overall Top 10</div>
+      <div class="info-card-body">Top 10 overall in each bracket (Mini, Junior, Teen, Senior). <strong>National Champion</strong> receives a trophy; 2nd–10th receive medals.</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🎭 ProductionMania — Thursday Night</div>
+    <div class="info-card">
+      <div class="info-card-body"><strong>MonStars of Mayhem</strong> performs Thursday, June 25 at <strong>8:36 PM</strong> in Room 1. All Production groups perform back-to-back in one big showcase with live hosting and its own award ceremony. This is the last regular competition night.<br><br>Cash prize: <strong>$500 + $500 Showstoppers gift certificate</strong> for Top Overall in each age division.</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🏆 Friday Finals — America Loves to Dance</div>
+    <div class="info-card">
+      <div class="info-card-body">Friday is Championship Day — a live TV-style show streamed to ~10,000 viewers. The <strong>Top 10 Competitive-level Small and Large Groups</strong> in each age division are invited back to compete one more time.<br><br>Qualifying groups are announced <strong>Wednesday or Thursday at awards</strong>. If CaRu qualifies:<br>• Bring posters &amp; signs<br>• Wear your best CaRu spirit gear<br>• Be camera ready — dancers may be asked to introduce routines<br><br><strong>Cash prizes:</strong> 1st $500 · 2nd $250 · 3rd $100</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Pink Carpet — 8:00 AM Friday</div>
+      <div class="info-card-body">CaRu faculty and graduating seniors are invited to walk the pink carpet on stage. Arrive early to sign up backstage (stage right) by 7:45 AM.</div>
+    </div>
+  </div>
+
+  <div class="info-section" style="padding-bottom:16px">
+    <div class="info-section-title">💜 From Kayla</div>
+    <div class="info-card">
+      <div class="info-card-body">"Nationals are more than scores or trophies. It's about representing our studio with pride, supporting one another, building friendships, and creating memories that last a lifetime."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ EATS & STAY ══ -->
+<div class="page" id="page-eats">
+  <div class="eats-hero" style="background:var(--ink);color:var(--paper);padding:20px 16px 18px">
+    <div class="info-hero-eye">Foxwoods &amp; Nearby</div>
+    <div class="info-hero-title" style="font-family:'DM Serif Display',serif;font-size:24px;line-height:1.2">Eats &amp; Stay</div>
+    <div style="font-size:12px;color:rgba(250,248,244,.4);margin-top:6px;line-height:1.7">350 Trolley Line Blvd · Mashantucket, CT<br>DoorDash &amp; Uber Eats deliver to Foxwoods hotel rooms</div>
+  </div>
+
+  <div class="info-section" style="padding-top:14px">
+    <div class="info-section-title">🍽️ On-Site at Foxwoods — Quick &amp; Casual</div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Junior's Restaurant &amp; Bakery</span><span class="place-price">$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span><span class="place-badge quick">Great for families</span></div>
+      <div class="place-desc">Famous NYC diner food and the best cheesecake since the 1950s. Located in the Fox Tower — solid burgers, sandwiches, and breakfast all day. Perfect between sessions.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Junior's+Restaurant+Foxwoods+Mashantucket+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Wahlburgers</span><span class="place-price">$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span><span class="place-badge quick">Fast &amp; easy</span></div>
+      <div class="place-desc">Paul Wahlberg's burger joint with the signature Wahl Sauce burger, shakes, and fries. Great quick grab between dances.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Wahlburgers+Foxwoods+Mashantucket+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Wingstop</span><span class="place-price">$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span><span class="place-badge quick">Fast</span></div>
+      <div class="place-desc">Fresh wings, hand-cut fries, and sides. Great for a quick, filling meal between awards ceremonies.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Wingstop+Foxwoods+Mashantucket+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Subway &amp; Starbucks</span><span class="place-price">$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span><span class="place-badge quick">Grab &amp; go</span></div>
+      <div class="place-desc">Both located inside the resort for quick sandwiches, coffee, and snacks. Convenient between early morning sessions.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Starbucks+Foxwoods+Mashantucket+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🍴 On-Site at Foxwoods — Sit-Down</div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Guy Fieri's Foxwoods Kitchen + Bar</span><span class="place-price">$$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site · Grand Pequot Tower</span></div>
+      <div class="place-desc">Bold flavors, big portions, fun atmosphere. Burgers, BBQ, and comfort food classics. Great for a team dinner with kids.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Guy+Fieri+Foxwoods+Kitchen+Bar+Mashantucket+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Hard Rock Cafe Foxwoods</span><span class="place-price">$$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site · Rainmaker expansion</span></div>
+      <div class="place-desc">Classic Hard Rock burgers, ribs, and cocktails in a high-energy rock memorabilia setting. Reliable and kid-friendly. 455 Trolley Line Blvd.</div>
+      <a class="place-link" href="https://cafe.hardrock.com/foxwoods/" target="_blank">↗ Website</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Seoul Alley</span><span class="place-price">$$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span></div>
+      <div class="place-desc">Korean street food and traditional Korean dishes with American twists. Highly reviewed — one of the best-kept secrets at Foxwoods.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Seoul+Alley+Foxwoods+Mashantucket" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Sugar Factory</span><span class="place-price">$$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span><span class="place-badge quick">Great for a celebration</span></div>
+      <div class="place-desc">Celebrity-favorite spot with over-the-top milkshakes, desserts, and fun American classics. Perfect for a team celebration after a big day.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Sugar+Factory+Foxwoods+Mashantucket+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Bedford by Martha Stewart</span><span class="place-price">$$$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span></div>
+      <div class="place-desc">Upscale comfort food using Martha's cherished recipes with locally sourced ingredients. Great for a special dinner.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Bedford+by+Martha+Stewart+Foxwoods" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Gordon Ramsay Hell's Kitchen</span><span class="place-price">$$$$</span></div>
+      <div class="place-meta"><span class="place-badge onsite">On-site</span></div>
+      <div class="place-desc">The TV show brought to life — upscale dining with steaks, Wellington, and fresh seafood. Top-rated on Yelp. Make a reservation in advance.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Gordon+Ramsay+Hell%27s+Kitchen+Foxwoods" target="_blank">↗ Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">📍 Nearby (5–15 min)</div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Mystic, CT</span><span class="place-price">$$–$$$</span></div>
+      <div class="place-meta"><span class="place-badge nearby">~15 min drive</span></div>
+      <div class="place-desc">The charming town of Mystic has tons of great restaurants, bakeries, and waterfront dining. Worth a trip for a free evening — Mystic Seaport and Mystic Aquarium are also nearby.</div>
+      <a class="place-link" href="https://maps.google.com/?q=restaurants+Mystic+CT" target="_blank">↗ Search restaurants in Mystic</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Tanger Outlets Food Court</span><span class="place-price">$</span></div>
+      <div class="place-meta"><span class="place-badge nearby">Walking distance · 455 Trolley Line</span></div>
+      <div class="place-desc">Right next to Foxwoods with quick food options plus shopping. Handy for a fast lunch without going far.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Tanger+Outlets+Foxwoods+Mashantucket" target="_blank">↗ Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🏨 Where to Stay</div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Fox Tower / Grand Pequot Tower / Great Cedar Hotel</span><span class="place-price">$$$</span></div>
+      <div class="place-meta"><span class="place-badge hotel">On-site · Most convenient</span></div>
+      <div class="place-desc">Staying on-site means zero travel time to the venue. Three hotel towers to choose from at Foxwoods — Fox Tower is the newest and nicest. Book early as these fill up fast during competitions.</div>
+      <a class="place-link" href="https://www.foxwoods.com/hotel" target="_blank">↗ Book at Foxwoods.com</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Bellissimo Grande Hotel (Wyndham)</span><span class="place-price">$$</span></div>
+      <div class="place-meta"><span class="place-badge hotel">~5 min drive · Free shuttle to Foxwoods</span></div>
+      <div class="place-desc">Half the price of Foxwoods hotels with a free shuttle. Clean rooms and very convenient. Popular choice for families watching the budget.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Bellissimo+Grande+Hotel+near+Foxwoods+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Hilton Garden Inn Preston Casino Area</span><span class="place-price">$$</span></div>
+      <div class="place-meta"><span class="place-badge hotel">~1.3 miles · Free shuttle</span></div>
+      <div class="place-desc">Clean, reliable Hilton with free shuttle to Foxwoods, pool, and complimentary breakfast. Great for families with kids.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Hilton+Garden+Inn+Preston+Casino+Area+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Hilltop Inn &amp; Suites</span><span class="place-price">$$</span></div>
+      <div class="place-meta"><span class="place-badge hotel">~3.5 miles · Free shuttle</span></div>
+      <div class="place-desc">Tuscan-inspired hotel with spacious rooms and free shuttle service to Foxwoods. Quiet and comfortable — a great value pick.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Hilltop+Inn+Suites+near+Foxwoods+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+
+    <div class="place-card">
+      <div class="place-top"><span class="place-name">Hampton Inn &amp; Suites Mystic</span><span class="place-price">$$</span></div>
+      <div class="place-meta"><span class="place-badge hotel">~15 min · No shuttle</span></div>
+      <div class="place-desc">Reliable Hampton Inn near Mystic with pool and breakfast. A good option if you want to stay in the charming Mystic area and drive to Foxwoods each day.</div>
+      <a class="place-link" href="https://maps.google.com/?q=Hampton+Inn+Suites+Mystic+CT" target="_blank">↗ Open in Maps</a>
+    </div>
+  </div>
+
+  <div class="info-section" style="padding-bottom:16px">
+    <div class="info-section-title">📦 Food Delivery</div>
+    <div class="info-card">
+      <div class="info-card-body">Both <strong>DoorDash</strong> and <strong>Uber Eats</strong> deliver to Foxwoods hotel rooms. Great option for late nights after awards when you don't want to venture out.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RULES ══ -->
+<div class="page" id="page-rules">
+  <div class="info-hero">
+    <div class="info-hero-eye">Showstoppers 2026</div>
+    <div class="info-hero-title">Competition Rules</div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">📋 Adjudication</div>
+    <div class="info-card">
+      <div class="info-card-body">If a routine <strong>can't perform during its scheduled time</strong>, it may perform "for Adjudication" instead.<br><br>• Announced on stage at the end of the awards session<br>• Still receives the appropriate medal or trophy based on score<br>• Still qualifies for National Finals<br>• Receives judges' comments<br><br>Routines <strong>must perform before the awards session</strong> for that set to be eligible for overall awards.</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🏅 Award Levels</div>
+    <div class="info-card">
+      <div class="info-card-body">Awards are based on predetermined point ranges — multiple routines in the same age group and category can receive the same award level.</div>
+      <div class="award-scale" style="margin-top:10px">
+        <div class="award-chip aw-crystal">⭐ Crystal<br><small>Competitive only</small></div>
+        <div class="award-chip aw-dplat">Double Platinum</div>
+        <div class="award-chip aw-plat">Platinum</div>
+        <div class="award-chip aw-gold">Gold</div>
+        <div class="award-chip aw-silver">Silver</div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Overall Top 10</div>
+      <div class="info-card-body">Top 10 in each age bracket: Mini, Junior, Teen, Senior, Adult.<br><strong>National Champion</strong> → Trophy &nbsp;·&nbsp; <strong>2nd–10th</strong> → Medal</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🎭 Competition Levels</div>
+    <div class="info-card">
+      <div class="info-card-title">Competitive</div>
+      <div class="info-card-body">Highest level. 5+ hours/week. Required for cash awards, Top Overall, and Crystal Award. Soloists at Competitive must stay Competitive for all solos, duet/trios, and groups at the same event.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Advanced</div>
+      <div class="info-card-body">3–5 hours/week. Limited competitive experience. Soloists must stay Advanced for all solos. May participate in Competitive groups. No cash awards.</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">📐 Age Divisions</div>
+    <div class="info-card">
+      <div class="info-card-body">Ages are calculated as of <strong>January 1, 2026</strong>.<br><br><strong>Solos:</strong> dancer's age on Jan 1.<br><strong>Groups:</strong> average age of all dancers (round down). The group also cannot compete more than one division younger than its oldest dancer.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Overall Brackets</div>
+      <div class="info-card-body">
+        <span class="info-pill">Mini · 8 &amp; under</span>
+        <span class="info-pill">Junior · 9–11</span>
+        <span class="info-pill">Teen · 12–14</span>
+        <span class="info-pill">Senior · 15–19</span>
+        <span class="info-pill">Adult · 20+</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">⏱️ Time Limits</div>
+    <div class="info-card">
+      <div class="info-card-body">
+        <span class="info-pill">Solo / Duet / Small Group · 3:00</span>
+        <span class="info-pill">Large Group / Super Group · 4:00</span>
+        <span class="info-pill">Production · 8:00</span>
+        <br>15% grace period allowed. Deduction: 0.1 pts/judge per 15 seconds over the limit.
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🏆 America Loves to Dance — Friday Finals</div>
+    <div class="info-card">
+      <div class="info-card-body">Top 10 Competitive-level Small and Large Groups in each age division (Mini/Junior/Teen/Senior) are invited back Friday to compete again in front of the full judge panel, streamed live.<br><br><strong>No dancer overlap</strong> allowed within the same age group. Announced Wednesday or Thursday at awards.<br><br>Advanced, Performance, and Shine level routines are <strong>not eligible</strong>. Production groups are also not eligible for America Loves to Dance (they compete Thursday in ProductionMania instead).</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-title">Cash Prizes</div>
+      <div class="info-card-body">
+        <span class="info-pill gold">🥇 1st Place · $500</span>
+        <span class="info-pill gold">🥈 2nd Place · $250</span>
+        <span class="info-pill gold">🥉 3rd Place · $100</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🎬 ProductionMania</div>
+    <div class="info-card">
+      <div class="info-card-body">All Production groups at Finals automatically compete in ProductionMania — a high-energy showcase held <strong>Thursday evening</strong> (the night before Friday Finals). All groups perform back-to-back with live hosting and their own award ceremony.<br><br>Cash prize: <strong>$500 + $500 gift certificate</strong> for Top Overall per age division.</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">📷 Filming &amp; Photography</div>
+    <div class="info-card">
+      <div class="info-card-body">Videotaping and movie cameras are <strong>prohibited</strong>. Still photography is limited to photos of your own child. No tripods, monopods, or professional setups. Air horns are also prohibited in the audience.</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-section-title">🎵 Scoring Criteria</div>
+    <div class="info-card">
+      <div class="info-card-body">Judges evaluate five areas:<br><br>
+        <span class="info-pill">Costume</span>
+        <span class="info-pill">Rhythm &amp; Sound</span>
+        <span class="info-pill">Routine</span>
+        <span class="info-pill">Stage Presence</span>
+        <span class="info-pill">Technique</span>
+        <br>Personalized written and audio feedback is provided for each entry. All judging decisions are final.
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section" style="padding-bottom:16px">
+    <div class="info-section-title">💡 Good to Know</div>
+    <div class="info-card">
+      <div class="info-card-body">• Routines must perform <strong>in scheduled order</strong> to be eligible for overall awards<br>• A rule violation not caught at a regional can still be applied at Finals<br>• Music must be uploaded in advance — cell phones and CDs not accepted<br>• Every routine receives a trophy; every dancer in a group receives a category medal</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .pages -->
+
+<!-- BOTTOM TABS -->
 <div class="tabbar">
   <div class="tab active" id="tab-schedule" onclick="showPage('schedule',this)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -277,202 +652,220 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);d
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
     <span class="tab-lbl">Eats &amp; Stay</span>
   </div>
-  <div class="tab" id="tab-gallery" onclick="showPage('gallery',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-    <span class="tab-lbl">Gallery</span>
+  <div class="tab" id="tab-rules" onclick="showPage('rules',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    <span class="tab-lbl">Rules</span>
   </div>
 </div>
 
 <script>
-const ROSTER={
-  "Jolene":["Mackenzie DeLuca"],
-  "Tomorrow":["Poppy Sweeney"],
-  "Black & Gold":["Leila Advani"],
+const ROSTER = {
   "Bad":["Kaitlyn Naughton"],
+  "Black and Gold":["Leila Advani"],
+  "Tomorrow":["Poppy Sweeney"],
+  "Jolene":["Mackenzie DeLuca"],
   "Locomotion":["Leila Advani","Poppy Sweeney","Kaitlyn Naughton"],
-  "Home":["Poppy Sweeney","Kaitlyn Naughton","Leila Advani","Mikayla Irene","Isabelle Marie Breaux","Raelyn Groninger"],
-  "What Are You Waiting For":["Ally Bonder","Emma Bonder","Mackenzie DeLuca","Mackenzie Naughton","Kaitlyn Naughton","Raelyn Groninger","Poppy Sweeney","Makayla Reading","Leila Advani","Mikayla Irene"],
+  "Mannequin":["Austyn Hanley"],
+  "Dangerous":["Kallista Jacobs"],
+  "Bassline":["Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Emma Bonder","Ally Bonder","Kelsey Steele"],
+  "The Accused":["Lia Ziemlinski","Hannah Garber","Mackenzie Naughton","Ally Bonder","Kallista Jacobs"],
+  "Winner Takes It All":["Sofia Kulp"],
+  "Don't You Mess Around":["Lia Ziemlinski","Hannah Garber","Mackenzie Naughton"],
+  "Unforgettable":["Ava Charlton"],
+  "That's Life":["Tenley Vlasac"],
+  "Bad Company":["Rosemary Vest"],
   "When I Grow Up":["Poppy Sweeney","Kaitlyn Naughton","Leila Advani","Mikayla Irene","Isabelle Marie Breaux"],
+  "Home":["Poppy Sweeney","Kaitlyn Naughton","Leila Advani","Mikayla Irene","Isabelle Marie Breaux","Raelyn Groninger"],
+  "Cosmic Love":["Kallista Jacobs","Stella Glospie","Kelsey Steele"],
+  "The Head vs The Heart":["Sofia Kulp","Ava Charlton"],
+  "Under The Sea":["Emma Schmelzer"],
+  "Cold Hearted":["Mackenzie Naughton"],
+  "Handle With Care":["Sofia Kulp","Ava Charlton","Angelina Gallagher","Gia Birchenough","Rosemary Vest","Tenley Vlasac","Elizabeth Casciano","Emma Schmelzer","Skye Bridges"],
+  "Dancing People":["Gia Birchenough","Skye Bridges","Austyn Hanley","Rosemary Vest","Ava Charlton"],
+  "The Reading":["Austyn Hanley","Angelina Gallagher","Tenley Vlasac","Rosemary Vest","Skye Bridges","Ava Charlton","Gia Birchenough"],
+  "Her Way":["Sofia Kulp","Ava Charlton","Angelina Gallagher","Rosemary Vest","Tenley Vlasac","Elizabeth Casciano","Emma Schmelzer","Austyn Hanley"],
+  "Smells Like Teen Spirit":["Lia Ziemlinski"],
+  "Endangered Species":["Ava Charlton","Sofia Kulp","Austyn Hanley","Kallista Jacobs","Tenley Vlasac"],
+  "Heal":["Angelina Gallagher","Austyn Hanley","Ava Charlton","Sofia Kulp"],
   "Don't You Remember":["Makayla Reading"],
   "I Have Nothing":["Stella Glospie"],
-  "Under the Sea":["Emma Schmelzer"],
-  "Cold Hearted":["Mackenzie Naughton"],
-  "Smells Like Teen Spirit":["Lia Ziemlinski"],
-  "Don't You Mess Around":["Lia Ziemlinski","Hannah Garber","Mackenzie Naughton"],
-  "To Be Loved":["Ava Charlton","Angelina Gallagher","Sofia Kulp","Austyn Hanley","Skye Bridges","Elizabeth Casciano","Rosemary Vest","Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Mikayla Irene","Angelina Vitadello","Gia Birchenough","Emma Schmelzer"],
-  "A Night In Paris":["Sofia Kulp","Austyn Hanley","Ava Charlton","Angelina Gallagher","Rosemary Vest","Tenley Vlasac","Mackenzie Naughton","Kallista Jacobs","Stella Glospie","Angelina Vitadello","Mackenzie DeLuca","Raelyn Groninger","Kaitlyn Naughton","Poppy Sweeney"],
-  "Saturn Return":["Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Makayla Reading","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Elizabeth Casciano"],
+  "What Are You Waiting For":["Ally Bonder","Emma Bonder","Mackenzie DeLuca","Mackenzie Naughton","Kaitlyn Naughton","Raelyn Groninger","Poppy Sweeney","Makayla Reading","Leila Advani","Mikayla Irene"],
   "Piano Man":["Ally Bonder","Emma Bonder","Poppy Sweeney","Kaitlyn Naughton","Kelsey Steele","Makayla Reading","Raelyn Groninger","Leila Advani","Angelina Vitadello","Mackenzie Naughton"],
-  "Her Way":["Sofia Kulp","Ava Charlton","Angelina Gallagher","Rosemary Vest","Tenley Vlasac","Elizabeth Casciano","Emma Schmelzer","Austyn Hanley"],
-  "Heal":["Angelina Gallagher","Austyn Hanley","Ava Charlton","Sofia Kulp"],
-  "The Accused":["Lia Ziemlinski","Hannah Garber","Mackenzie Naughton","Ally Bonder","Kallista Jacobs"],
-  "Dancing People":["Gia Birchenough","Skye Bridges","Austyn Hanley","Rosemary Vest","Ava Charlton"],
-  "Endangered Species":["Ava Charlton","Sofia Kulp","Austyn Hanley","Kallista Jacobs","Tenley Vlasac"],
-  "The Reading":["Austyn Hanley","Angelina Gallagher","Tenley Vlasac","Rosemary Vest","Skye Bridges","Ava Charlton","Gia Birchenough"],
-  "Bassline":["Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Emma Bonder","Ally Bonder","Kelsey Steele"],
-  "Handle With Care":["Sofia Kulp","Ava Charlton","Angelina Gallagher","Gia Birchenough","Rosemary Vest","Tenley Vlasac","Elizabeth Casciano","Emma Schmelzer","Skye Bridges"],
-  "MonStars of Mayhem":["Ava Charlton","Angelina Gallagher","Sofia Kulp","Austyn Hanley","Skye Bridges","Elizabeth Casciano","Rosemary Vest","Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Mikayla Irene","Angelina Vitadello","Poppy Sweeney","Kaitlyn Naughton","Leila Advani","Isabelle Marie Breaux","Raelyn Groninger","Makayla Reading","Emma Schmelzer","Tenley Vlasac","Kelsey Steele","Gia Birchenough"],
-  "Bad Company":["Rosemary Vest"],
-  "That's Life":["Tenley Vlasac"],
-  "Dangerous":["Kallista Jacobs"],
-  "Mannequin":["Austyn Hanley"],
-  "The Winner Takes It All":["Sofia Kulp"],
-  "Unforgettable":["Ava Charlton"],
-  "Cosmic Love":["Kallista Jacobs","Stella Glospie","Kelsey Steele"],
-  "The Head vs The Heart":["Sofia Kulp","Ava Charlton"]
+  "To Be Loved":["Ava Charlton","Angelina Gallagher","Sofia Kulp","Austyn Hanley","Skye Bridges","Elizabeth Casciano","Rosemary Vest","Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Mikayla Irene","Angelina Vitadello","Gia Birchenough"],
+  "Saturn Return":["Stella Glospie","Kallista Jacobs","Mackenzie Naughton","Makayla Reading","Hannah Garber","Lia Ziemlinski","Mackenzie DeLuca","Emma Bonder","Ally Bonder","Elizabeth Casciano"],
+  "A Night in Paris":["Sofia Kulp","Austyn Hanley","Ava Charlton","Angelina Gallagher","Rosemary Vest","Tenley Vlasac","Mackenzie Naughton","Kallista Jacobs","Stella Glospie","Angelina Vitadello","Mackenzie DeLuca","Raelyn Groninger","Kaitlyn Naughton","Poppy Sweeney"],
+  "MonStars of Mayhem":["Ally Bonder","Emma Bonder","Mackenzie DeLuca","Mackenzie Naughton","Kaitlyn Naughton","Raelyn Groninger","Poppy Sweeney","Makayla Reading","Leila Advani","Mikayla Irene","Isabelle Marie Breaux","Ava Charlton","Angelina Gallagher","Sofia Kulp","Austyn Hanley","Skye Bridges","Elizabeth Casciano","Rosemary Vest","Stella Glospie","Kallista Jacobs","Hannah Garber","Lia Ziemlinski","Angelina Vitadello","Tenley Vlasac","Kelsey Steele","Gia Birchenough","Jaclyn Dziuda"]
 };
 
-const ENTRIES=[
-  {date:"04/24",time:"7:39 PM",num:4,title:"Unforgettable",level:"Advanced",div:"Solo",cat:"Open",age:"Senior"},
-  {date:"04/24",time:"7:54 PM",num:9,title:"Mannequin",level:"Advanced",div:"Solo",cat:"Jazz",age:"Senior"},
-  {date:"04/24",time:"8:00 PM",num:11,title:"Dangerous",level:"Advanced",div:"Solo",cat:"Jazz",age:"Senior"},
-  {date:"04/24",time:"9:12 PM",num:35,title:"The Winner Takes It All",level:"Advanced",div:"Solo",cat:"Lyrical",age:"Senior"},
-  {date:"04/24",time:"9:33 PM",num:42,title:"The Head vs The Heart",level:"Advanced",div:"Duo/Trio",cat:"Contemporary",age:"Senior"},
-  {date:"04/24",time:"10:02 PM",type:"award",label:"Friday Session 1 Awards"},
-  {date:"04/25",time:"7:39 AM",num:54,title:"Black & Gold",level:"Advanced",div:"Solo",cat:"Jazz",age:"Junior"},
-  {date:"04/25",time:"8:00 AM",num:61,title:"Bad",level:"Advanced",div:"Solo",cat:"Jazz",age:"Junior"},
-  {date:"04/25",time:"9:31 AM",num:91,title:"Like Jennie",level:"Novice",div:"Small Group",cat:"Hip Hop",age:"Petite"},
-  {date:"04/25",time:"9:59 AM",num:99,title:"Burning Love",level:"Novice",div:"Small Group",cat:"Musical Theatre",age:"Petite"},
-  {date:"04/25",time:"10:02 AM",type:"break",label:"Judges break"},
-  {date:"04/25",time:"10:28 AM",num:104,title:"When the Sun Goes Down",level:"Novice",div:"Small Group",cat:"Contemporary",age:"Petite"},
-  {date:"04/25",time:"11:05 AM",num:115,title:"Me and My Girls",level:"Novice",div:"Small Group",cat:"Jazz",age:"Petite"},
-  {date:"04/25",time:"11:25 AM",num:121,title:"Locomotion",level:"Advanced",div:"Duo/Trio",cat:"Jazz",age:"Petite"},
-  {date:"04/25",time:"11:47 AM",num:128,title:"Tomorrow",level:"Advanced",div:"Solo",cat:"Lyrical",age:"Petite"},
-  {date:"04/25",time:"11:53 AM",num:130,title:"Fabulous",level:"Novice",div:"Solo",cat:"Musical Theatre",age:"Petite"},
-  {date:"04/25",time:"12:06 PM",num:134,title:"Endgame",level:"Novice",div:"Solo",cat:"Contemporary",age:"Junior"},
-  {date:"04/25",time:"12:09 PM",num:302,title:"Bad Dream",level:"Novice",div:"Solo",cat:"Contemporary",age:"Junior"},
-  {date:"04/25",time:"12:27 PM",num:140,title:"Tell Me Something",level:"Novice",div:"Duo/Trio",cat:"Jazz",age:"Petite"},
-  {date:"04/25",time:"12:34 PM",type:"award",label:"Saturday Session 1 Awards"},
-  {date:"04/25",time:"2:31 PM",num:159,title:"Smells Like Teen Spirit",level:"Advanced",div:"Solo",cat:"Open",age:"Teen"},
-  {date:"04/25",time:"3:09 PM",type:"break",label:"Judges break"},
-  {date:"04/25",time:"3:46 PM",num:179,title:"Under the Sea",level:"Advanced",div:"Solo",cat:"Contemporary",age:"Teen"},
-  {date:"04/25",time:"3:52 PM",num:181,title:"Bad Company",level:"Advanced",div:"Solo",cat:"Contemporary",age:"Teen"},
-  {date:"04/25",time:"4:10 PM",num:187,title:"Cold Hearted",level:"Advanced",div:"Solo",cat:"Jazz",age:"Teen"},
-  {date:"04/25",time:"4:16 PM",num:189,title:"That's Life",level:"Advanced",div:"Solo",cat:"Jazz",age:"Teen"},
-  {date:"04/25",time:"5:39 PM",num:212,title:"MonStars of Mayhem",level:"Advanced",div:"Production",cat:"Open",age:"13 and Over"},
-  {date:"04/25",time:"5:49 PM",type:"award",label:"Saturday Session 2 Awards"},
-  {date:"04/25",time:"6:57 PM",num:215,title:"Endangered Species",level:"Advanced",div:"Small Group",cat:"Jazz",age:"Senior"},
-  {date:"04/25",time:"7:07 PM",num:218,title:"Jolene",level:"Intermediate",div:"Solo",cat:"Tap",age:"Teen"},
-  {date:"04/25",time:"7:23 PM",num:223,title:"I Have Nothing",level:"Intermediate",div:"Solo",cat:"Lyrical",age:"Teen"},
-  {date:"04/25",time:"7:29 PM",num:225,title:"Don't You Remember",level:"Intermediate",div:"Solo",cat:"Lyrical",age:"Teen"},
-  {date:"04/25",time:"7:36 PM",num:227,title:"Don't You Mess Around",level:"Advanced",div:"Duo/Trio",cat:"Jazz",age:"Teen"},
-  {date:"04/25",time:"7:53 PM",num:232,title:"A Night In Paris",level:"Advanced",div:"Large Group",cat:"Jazz",age:"Teen"},
-  {date:"04/25",time:"8:11 PM",num:237,title:"Heal",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Senior"},
-  {date:"04/25",time:"8:14 PM",type:"break",label:"Judges break"},
-  {date:"04/25",time:"8:28 PM",num:311,title:"Saturn Return",level:"Advanced",div:"Large Group",cat:"Contemporary",age:"Teen"},
-  {date:"04/25",time:"8:36 PM",num:240,title:"To Be Loved",level:"Advanced",div:"Large Group",cat:"Contemporary",age:"Teen"},
-  {date:"04/25",time:"8:57 PM",num:246,title:"Cosmic Love",level:"Intermediate",div:"Duo/Trio",cat:"Contemporary",age:"Teen"},
-  {date:"04/25",time:"9:00 PM",type:"break",label:"Judges break"},
-  {date:"04/25",time:"10:18 PM",type:"award",label:"Saturday Session 3 Awards"},
-  {date:"04/26",time:"7:33 AM",num:264,title:"Dancing People",level:"Advanced",div:"Small Group",cat:"Hip Hop",age:"Teen"},
-  {date:"04/26",time:"8:08 AM",num:275,title:"Bassline",level:"Advanced",div:"Small Group",cat:"Open",age:"Teen"},
-  {date:"04/26",time:"8:12 AM",num:276,title:"Handle With Care",level:"Advanced",div:"Small Group",cat:"Open",age:"Teen"},
-  {date:"04/26",time:"8:25 AM",num:280,title:"Piano Man",level:"Advanced",div:"Large Group",cat:"Open",age:"Junior"},
-  {date:"04/26",time:"8:44 AM",num:286,title:"Wonderland",level:"Intermediate",div:"Solo",cat:"Lyrical",age:"Petite"},
-  {date:"04/26",time:"8:51 AM",num:288,title:"When I Grow Up",level:"Advanced",div:"Small Group",cat:"Jazz",age:"Junior"},
-  {date:"04/26",time:"9:12 AM",num:294,title:"The Reading",level:"Advanced",div:"Small Group",cat:"Jazz",age:"Teen"},
-  {date:"04/26",time:"9:26 AM",num:298,title:"What Are You Waiting For",level:"Advanced",div:"Large Group",cat:"Jazz",age:"Junior"},
-  {date:"04/26",time:"9:47 AM",num:304,title:"Home",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Junior"},
-  {date:"04/26",time:"9:54 AM",num:306,title:"The Accused",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Teen"},
-  {date:"04/26",time:"9:58 AM",num:307,title:"Her Way",level:"Advanced",div:"Small Group",cat:"Contemporary",age:"Teen"},
-  {date:"04/26",time:"10:23 AM",num:315,title:"Heaven is a Place",level:"Intermediate",div:"Duo/Trio",cat:"Lyrical",age:"Petite"},
-  {date:"04/26",time:"10:26 AM",num:316,title:"Rollin",level:"Intermediate",div:"Solo",cat:"Jazz",age:"Junior"},
-  {date:"04/26",time:"12:02 PM",type:"award",label:"Sunday Session 1 Awards"}
+// Age bracket helper
+function ageBracket(ageStr) {
+  const n = parseInt(ageStr);
+  if (n <= 8) return "Mini";
+  if (n <= 11) return "Junior";
+  if (n <= 14) return "Teen";
+  return "Senior";
+}
+
+const ENTRIES = [
+  // TUESDAY
+  {date:"06/23",time:"8:33 AM",num:1038,title:"Bad",level:"Competitive",div:"Solo",cat:"Jazz",age:"11 Yrs",room:"Room 2"},
+  {date:"06/23",time:"9:25 AM",type:"award",label:"Awards – Room 2"},
+  {date:"06/23",time:"10:37 AM",num:1051,title:"Black and Gold",level:"Advanced",div:"Solo",cat:"Jazz",age:"10 Yrs",room:"Room 1"},
+  {date:"06/23",time:"11:27 AM",num:1039,title:"Tomorrow",level:"Competitive",div:"Solo",cat:"Lyrical Jazz",age:"8 Yrs",room:"Room 2"},
+  {date:"06/23",time:"11:35 AM",type:"award",label:"Awards – Room 2"},
+  {date:"06/23",time:"11:55 AM",type:"award",label:"Awards – Room 1"},
+  {date:"06/23",time:"2:17 PM",num:1036,title:"Jolene",level:"Advanced",div:"Solo",cat:"Tap",age:"13 Yrs",room:"Room 2"},
+  {date:"06/23",time:"3:37 PM",num:1044,title:"Locomotion",level:"Competitive",div:"Duo/Trio",cat:"Jazz",age:"9 Yrs",room:"Room 1"},
+  {date:"06/23",time:"4:05 PM",type:"award",label:"Awards – Room 2"},
+  {date:"06/23",time:"4:30 PM",type:"award",label:"Awards – Room 1"},
+  {date:"06/23",time:"4:33 PM",num:1073,title:"Mannequin",level:"Competitive",div:"Solo",cat:"Jazz",age:"17 Yrs",room:"Room 2"},
+  {date:"06/23",time:"4:52 PM",num:1072,title:"Dangerous",level:"Competitive",div:"Solo",cat:"Jazz",age:"17 Yrs",room:"Room 2"},
+  {date:"06/23",time:"6:20 PM",type:"award",label:"Awards – Room 2"},
+  {date:"06/23",time:"6:46 PM",num:1045,title:"Bassline",level:"Competitive",div:"Small Group",cat:"Jazz",age:"14 Yrs",room:"Room 1"},
+  {date:"06/23",time:"6:56 PM",num:1059,title:"The Accused",level:"Competitive",div:"Small Group",cat:"Contemporary",age:"14 Yrs",room:"Room 1"},
+  {date:"06/23",time:"7:05 PM",type:"award",label:"Awards – Room 1"},
+  {date:"06/23",time:"9:51 PM",num:1034,title:"Winner Takes It All",level:"Competitive",div:"Solo",cat:"Lyrical Jazz",age:"17 Yrs",room:"Room 2"},
+  {date:"06/23",time:"10:10 PM",num:1065,title:"Don't You Mess Around",level:"Competitive",div:"Duo/Trio",cat:"Jazz",age:"13 Yrs",room:"Room 1"},
+  {date:"06/23",time:"10:15 PM",type:"award",label:"Awards – Room 2"},
+  {date:"06/23",time:"10:45 PM",type:"award",label:"Awards – Room 1"},
+  // WEDNESDAY
+  {date:"06/24",time:"8:09 AM",num:1071,title:"Unforgettable",level:"Competitive",div:"Solo",cat:"Open",age:"16 Yrs",room:"Room 2"},
+  {date:"06/24",time:"8:22 AM",num:1069,title:"That's Life",level:"Competitive",div:"Solo",cat:"Jazz",age:"15 Yrs",room:"Room 2"},
+  {date:"06/24",time:"9:25 AM",num:1070,title:"Bad Company",level:"Competitive",div:"Solo",cat:"Contemporary",age:"15 Yrs",room:"Room 2"},
+  {date:"06/24",time:"10:20 AM",num:1050,title:"When I Grow Up",level:"Competitive",div:"Small Group",cat:"Jazz",age:"10 Yrs",room:"Room 1"},
+  {date:"06/24",time:"10:40 AM",type:"award",label:"Awards – Room 2"},
+  {date:"06/24",time:"11:07 AM",num:1053,title:"Home",level:"Competitive",div:"Small Group",cat:"Contemporary",age:"10 Yrs",room:"Room 1"},
+  {date:"06/24",time:"12:25 PM",type:"award",label:"Awards – Room 1"},
+  {date:"06/24",time:"2:55 PM",num:1040,title:"Cosmic Love",level:"Competitive",div:"Duo/Trio",cat:"Contemporary",age:"15 Yrs",room:"Room 2"},
+  {date:"06/24",time:"3:25 PM",num:1037,title:"The Head vs The Heart",level:"Competitive",div:"Duo/Trio",cat:"Open",age:"16 Yrs",room:"Room 2"},
+  {date:"06/24",time:"3:40 PM",type:"award",label:"Awards – Room 2"},
+  {date:"06/24",time:"4:41 PM",num:1068,title:"Under The Sea",level:"Competitive",div:"Solo",cat:"Contemporary",age:"14 Yrs",room:"Room 2"},
+  {date:"06/24",time:"5:32 PM",num:1035,title:"Cold Hearted",level:"Competitive",div:"Solo",cat:"Jazz",age:"14 Yrs",room:"Room 2"},
+  {date:"06/24",time:"5:50 PM",type:"award",label:"Awards – Room 2"},
+  {date:"06/24",time:"6:53 PM",num:1043,title:"Handle With Care",level:"Competitive",div:"Small Group",cat:"Open",age:"15 Yrs",room:"Room 1"},
+  {date:"06/24",time:"7:10 PM",num:1041,title:"Dancing People",level:"Competitive",div:"Small Group",cat:"Hip Hop",age:"15 Yrs",room:"Room 1"},
+  {date:"06/24",time:"7:37 PM",num:1046,title:"The Reading",level:"Competitive",div:"Small Group",cat:"Jazz",age:"15 Yrs",room:"Room 1"},
+  {date:"06/24",time:"7:58 PM",num:1042,title:"Her Way",level:"Competitive",div:"Small Group",cat:"Contemporary",age:"15 Yrs",room:"Room 1"},
+  {date:"06/24",time:"8:35 PM",type:"award",label:"Awards – Room 1"},
+  {date:"06/24",time:"8:48 PM",num:1060,title:"Smells Like Teen Spirit",level:"Competitive",div:"Solo",cat:"Open",age:"13 Yrs",room:"Room 2"},
+  {date:"06/24",time:"9:49 PM",num:1074,title:"Endangered Species",level:"Competitive",div:"Small Group",cat:"Jazz",age:"16 Yrs",room:"Room 1"},
+  {date:"06/24",time:"10:13 PM",num:1052,title:"Heal",level:"Competitive",div:"Small Group",cat:"Contemporary",age:"16 Yrs",room:"Room 1"},
+  {date:"06/24",time:"10:30 PM",type:"award",label:"Awards – Room 1"},
+  {date:"06/24",time:"10:55 PM",type:"award",label:"Awards – Room 2"},
+  // THURSDAY
+  {date:"06/25",time:"8:33 AM",num:1067,title:"Don't You Remember",level:"Advanced",div:"Solo",cat:"Lyrical Jazz",age:"15 Yrs",room:"Room 2"},
+  {date:"06/25",time:"8:51 AM",num:1066,title:"I Have Nothing",level:"Advanced",div:"Solo",cat:"Lyrical Jazz",age:"15 Yrs",room:"Room 2"},
+  {date:"06/25",time:"9:40 AM",type:"award",label:"Awards – Room 2"},
+  {date:"06/25",time:"10:00 AM",num:1049,title:"What Are You Waiting For",level:"Competitive",div:"Large Group",cat:"Jazz",age:"12 Yrs",room:"Room 1"},
+  {date:"06/25",time:"10:11 AM",num:1054,title:"Piano Man",level:"Competitive",div:"Large Group",cat:"Open",age:"12 Yrs",room:"Room 1"},
+  {date:"06/25",time:"11:05 AM",type:"award",label:"Awards – Room 1"},
+  {date:"06/25",time:"11:47 AM",num:1056,title:"To Be Loved",level:"Competitive",div:"Large Group",cat:"Contemporary",age:"14 Yrs",room:"Room 1"},
+  {date:"06/25",time:"11:59 AM",num:1048,title:"Saturn Return",level:"Competitive",div:"Large Group",cat:"Lyrical Jazz",age:"14 Yrs",room:"Room 1"},
+  {date:"06/25",time:"12:33 PM",num:1047,title:"A Night in Paris",level:"Competitive",div:"Large Group",cat:"Jazz",age:"14 Yrs",room:"Room 1"},
+  {date:"06/25",time:"12:50 PM",type:"award",label:"Awards – Room 1 · 🎉 Team celebration after!"},
+  {date:"06/25",time:"8:36 PM",num:1063,title:"MonStars of Mayhem",level:"Competitive",div:"Production",cat:"Production",age:"13 Yrs",room:"Room 1"},
+  {date:"06/25",time:"9:00 PM",type:"award",label:"ProductionMania Awards – Room 1"},
+  // FRIDAY - Finals Day
+  {date:"06/26",time:"8:00 AM",type:"finals",label:"🌸 Pink Carpet Walk – Faculty & Graduating Seniors"},
+  {date:"06/26",time:"8:30 AM",type:"finals",label:"Opening Number Performance"},
+  {date:"06/26",time:"8:45 AM",type:"finals",label:"Mini Small Group Finals & Awards"},
+  {date:"06/26",time:"9:20 AM",type:"finals",label:"Junior Small Group Finals & Awards"},
+  {date:"06/26",time:"10:20 AM",type:"finals",label:"Teen Small Group Finals & Awards"},
+  {date:"06/26",time:"11:20 AM",type:"finals",label:"Senior Small Group & Mini/Junior Super Group Finals & Awards"},
+  {date:"06/26",time:"12:30 PM",type:"break",label:"Intermission / Lunch Break"},
+  {date:"06/26",time:"1:20 PM",type:"finals",label:"Teen/Senior Super Group Finals & Awards"},
+  {date:"06/26",time:"2:20 PM",type:"finals",label:"Mini Large Group Finals & Awards"},
+  {date:"06/26",time:"2:50 PM",type:"finals",label:"Junior Large Group Finals & Awards"},
+  {date:"06/26",time:"3:50 PM",type:"finals",label:"Teen Large Group Finals & Awards"},
+  {date:"06/26",time:"4:50 PM",type:"finals",label:"Senior Large Group Finals & Awards"},
 ];
 
 const ALL_DANCERS=[...new Set(Object.values(ROSTER).flat())].sort();
-const CC={Jazz:"b-jazz",Contemporary:"b-contemporary",Lyrical:"b-lyrical","Hip Hop":"b-hiphop",Tap:"b-tap","Musical Theatre":"b-musical",Open:"b-open"};
-const DL={"04/24":"Friday","04/25":"Saturday","04/26":"Sunday"};
-const DD={"04/24":"April 24","04/25":"April 25","04/26":"April 26"};
+const CC={Jazz:"b-jazz",Contemporary:"b-contemporary","Lyrical Jazz":"b-lyrical","Hip Hop":"b-hiphop",Tap:"b-tap",Open:"b-open",Production:"b-production"};
+const DL={"06/23":"Tuesday","06/24":"Wednesday","06/25":"Thursday","06/26":"Friday"};
+const DD={"06/23":"June 23","06/24":"June 24","06/25":"June 25","06/26":"June 26 · America Loves to Dance Finals"};
 
-function getRoster(t){for(const[k,v]of Object.entries(ROSTER))if(k.toLowerCase()===t.toLowerCase())return v;return null}
-function isOurs(e){return!e.type&&!!getRoster(e.title)}
+function ageBracket(s){const n=parseInt(s);if(n<=8)return"Mini";if(n<=11)return"Junior";if(n<=14)return"Teen";return"Senior";}
+function getRoster(t){for(const[k,v]of Object.entries(ROSTER))if(k.toLowerCase()===t.toLowerCase())return v;return null;}
 
 let drawerOpen=false;
-function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('filterDrawer').classList.toggle('open',drawerOpen)}
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById("filterDrawer").classList.toggle("open",drawerOpen);}
 
-function getF(){return{day:document.getElementById('dayFilter').value,cat:document.getElementById('catFilter').value,age:document.getElementById('ageFilter').value,div:document.getElementById('divFilter').value,sq:(document.getElementById('dancerSearch').value||'').trim().toLowerCase()}}
+function getF(){return{
+  day:document.getElementById("dayFilter").value,
+  cat:document.getElementById("catFilter").value,
+  age:document.getElementById("ageFilter").value,
+  div:document.getElementById("divFilter").value,
+  sq:(document.getElementById("dancerSearch").value||"").trim().toLowerCase()
+};}
 
 function render(){
   const f=getF();
-  const active=[f.day!=='all',f.cat!=='all',f.age!=='all',f.div!=='all',!!f.sq].filter(Boolean).length;
+  const active=[f.day!=="all",f.cat!=="all",f.age!=="all",f.div!=="all",!!f.sq].filter(Boolean).length;
+  const btn=document.getElementById("filterBtn");
+  btn.classList.toggle("on",active>0);
+  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg> Filters'+(active?` (${active})`:"");
 
-  // filter btn
-  const btn=document.getElementById('filterBtn');
-  btn.classList.toggle('on',active>0);
-  btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg> Filters${active?` (${active})`:''}`;
-
-  // chips
   const chipDefs=[];
-  if(f.sq) chipDefs.push({t:'Dancer: '+f.sq,c:()=>{document.getElementById('dancerSearch').value='';render()}});
-  if(f.day!=='all') chipDefs.push({t:{['04/24']:'Fri Apr 24',['04/25']:'Sat Apr 25',['04/26']:'Sun Apr 26'}[f.day],c:()=>{document.getElementById('dayFilter').value='all';render()}});
-  if(f.cat!=='all') chipDefs.push({t:f.cat,c:()=>{document.getElementById('catFilter').value='all';render()}});
-  if(f.age!=='all') chipDefs.push({t:f.age,c:()=>{document.getElementById('ageFilter').value='all';render()}});
-  if(f.div!=='all') chipDefs.push({t:f.div,c:()=>{document.getElementById('divFilter').value='all';render()}});
+  if(f.sq) chipDefs.push({t:"Dancer: "+f.sq,c:()=>{document.getElementById("dancerSearch").value="";render();}});
+  if(f.day!=="all") chipDefs.push({t:{"06/23":"Tue Jun 23","06/24":"Wed Jun 24","06/25":"Thu Jun 25","06/26":"Fri Jun 26"}[f.day],c:()=>{document.getElementById("dayFilter").value="all";render();}});
+  if(f.age!=="all") chipDefs.push({t:f.age,c:()=>{document.getElementById("ageFilter").value="all";render();}});
+  if(f.cat!=="all") chipDefs.push({t:f.cat,c:()=>{document.getElementById("catFilter").value="all";render();}});
+  if(f.div!=="all") chipDefs.push({t:f.div,c:()=>{document.getElementById("divFilter").value="all";render();}});
   window._cc=chipDefs;
-  document.getElementById('chipsEl').innerHTML=chipDefs.map((c,i)=>`<div class="chip" onclick="_cc[${i}].c()"><span>${c.t}</span><span style="opacity:.5;margin-left:2px">×</span></div>`).join('');
+  document.getElementById("chipsEl").innerHTML=chipDefs.map((c,i)=>`<div class="chip" onclick="_cc[${i}].c()"><span>${c.t}</span><span style="opacity:.5;margin-left:2px">×</span></div>`).join("");
 
-  let html='',total=0;
-  for(const d of["04/24","04/25","04/26"]){
-    if(f.day!=='all'&&f.day!==d) continue;
+  let html="",total=0;
+  for(const d of["06/23","06/24","06/25","06/26"]){
+    if(f.day!=="all"&&f.day!==d) continue;
+    const isFri=d==="06/26";
     const rows=ENTRIES.filter(e=>{
       if(e.date!==d) return false;
-      if(e.type) return f.cat==='all'&&f.age==='all'&&f.div==='all'&&!f.sq;
-      if(f.cat!=='all'&&e.cat!==f.cat) return false;
-      if(f.age!=='all'&&e.age!==f.age) return false;
-      if(f.div!=='all'&&e.div!==f.div) return false;
+      if(e.type) return active===0||(f.day!=="all"&&active===1);
+      if(f.cat!=="all"&&e.cat!==f.cat) return false;
+      if(f.div!=="all"&&e.div!==f.div) return false;
+      if(f.age!=="all"&&ageBracket(e.age)!==f.age) return false;
       if(f.sq){const r=getRoster(e.title);if(!r||!r.some(n=>n.toLowerCase().includes(f.sq))) return false;}
       return true;
     });
     const real=rows.filter(e=>!e.type);
-    if(!real.length) continue;
+    if(!real.length&&!isFri) continue;
+    if(isFri&&rows.length===0) continue;
     total+=real.length;
-    html+=`<div class="day-hdr"><span class="day-name">${DL[d]}</span><span class="day-sub">${DD[d]}</span><span class="day-ct">${real.length} entries</span></div>`;
+    if(isFri) html+=`<div class="friday-banner"><div class="friday-title">🏆 America Loves to Dance Finals</div><div class="friday-sub">Friday June 26 · If CaRu qualifies you'll be notified at awards Wed or Thu. Bring signs, wear spirit gear, be camera ready!</div></div>`;
+    const ctSpan=real.length>0?`<span class="day-ct">${real.length} entries</span>`:"";html+=`<div class="day-hdr"><span class="day-name">${DL[d]}</span><span class="day-sub">${DD[d]}</span>${ctSpan}</div>`;
     for(const e of rows){
-      if(e.type==='break'){
-        html+=`<div class="special"><div class="sp-time">${e.time}</div><div class="sp-label"><span class="badge b-neu">Break</span>${e.label}</div></div>`;
-      } else if(e.type==='award'){
-        html+=`<div class="special award"><div class="sp-time">${e.time}</div><div class="sp-label"><span class="badge b-award">Awards</span>${e.label}</div></div>`;
-      } else {
-        const r=getRoster(e.title);
-        let dh='';
-        if(r){const hit=f.sq&&r.some(n=>n.toLowerCase().includes(f.sq));const pts=r.map(n=>f.sq&&n.toLowerCase().includes(f.sq)?`<span class="hi">${n}</span>`:n);dh=`<div class="dancers${hit?' hit':''}">${pts.join(', ')}</div>`;}
-        html+=`<div class="entry-card">
-          <div class="time-block"><div class="time-main">${e.time}</div><div class="time-num">#${e.num}</div></div>
-          <div class="entry-body">
-            <div class="entry-name">${e.title}</div>
-            <div class="entry-tags"><span class="badge ${CC[e.cat]||'b-open'}">${e.cat}</span><span class="badge b-neu">${e.div}</span><span class="badge b-neu">${e.age}</span><span class="badge b-neu">${e.level}</span></div>
-            ${dh}
-          </div>
-        </div>`;
+      if(e.type==="award") html+=`<div class="special award"><div class="sp-time">${e.time}</div><div class="sp-label"><span class="badge b-award">Awards</span>${e.label}</div></div>`;
+      else if(e.type==="finals") html+=`<div class="special finals"><div class="sp-time">${e.time}</div><div class="sp-label"><span class="badge b-production">Finals</span>${e.label}</div></div>`;
+      else if(e.type==="break") html+=`<div class="special"><div class="sp-time">${e.time}</div><div class="sp-label">${e.label}</div></div>`;
+      else{
+        const r=getRoster(e.title);let dh="";
+        if(r){const hit=f.sq&&r.some(n=>n.toLowerCase().includes(f.sq));const pts=r.map(n=>f.sq&&n.toLowerCase().includes(f.sq)?`<span class='hi'>${n}</span>`:n);const hitCls=hit?' hit':'';dh=`<div class='dancers${hitCls}'>${pts.join(', ')}</div>`;}
+        const lvl=e.level==='Advanced'?'<span class="badge b-advanced">Advanced</span>':'<span class="badge b-neu">Competitive</span>';
+        html+=`<div class="entry-card"><div class="time-block"><div class="time-main">${e.time}</div><div class="time-num">#${e.num}</div><div class="time-room">${e.room}</div></div><div class="entry-body"><div class="entry-name">${e.title}</div><div class="entry-tags"><span class="badge ${CC[e.cat]||'b-neu'}">${e.cat}</span><span class="badge b-neu">${e.div}</span><span class="badge b-neu">${e.age}</span>${lvl}</div>${dh}</div></div>`;
       }
     }
   }
-  if(!html) html=`<div class="empty">No entries match your filters.<br>Try adjusting them above.</div>`;
-  document.getElementById('listEl').innerHTML=html;
-
-  const meta=document.getElementById('metaEl');
-  if(active>0){meta.style.display='';meta.innerHTML=`Showing <strong>${total}</strong> ${total===1?'entry':'entries'}`;}
-  else meta.style.display='none';
-
-  // stats
-  const tot=ENTRIES.filter(e=>!e.type).length;
-  document.getElementById('statsEl').innerHTML=`<div class="stat"><div class="stat-n">${tot}</div><div class="stat-l">Entries</div></div><div class="stat"><div class="stat-n">${ALL_DANCERS.length}</div><div class="stat-l">Dancers</div></div><div class="stat"><div class="stat-n">3</div><div class="stat-l">Days</div></div><div class="stat"><div class="stat-n">Apr 24</div><div class="stat-l">Starts</div></div>`;
+  if(!html) html='<div class="empty">No entries match your filters.<br>Try adjusting them above.</div>';
+  document.getElementById("listEl").innerHTML=html;
+  const meta=document.getElementById("metaEl");
+  if(active>0){meta.style.display="";meta.innerHTML=`Showing <strong>${total}</strong> ${total===1?"entry":"entries"}`;}
+  else meta.style.display="none";
 }
 
 function clearFilters(){
-  document.getElementById('dancerSearch').value='';
-  ['dayFilter','catFilter','ageFilter','divFilter'].forEach(id=>document.getElementById(id).value='all');
+  document.getElementById("dancerSearch").value="";
+  ["dayFilter","catFilter","ageFilter","divFilter"].forEach(id=>document.getElementById(id).value="all");
   render();
 }
 
 function showPage(id,el){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab,.dn-link').forEach(t=>t.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  document.getElementById('tab-'+id)?.classList.add('active');
-  if(el?.classList?.contains('dn-link')) el.classList.add('active');
-  if(drawerOpen&&id!=='schedule'){drawerOpen=false;document.getElementById('filterDrawer').classList.remove('open');}
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".tab,.dn-link").forEach(t=>t.classList.remove("active"));
+  document.getElementById("page-"+id).classList.add("active");
+  document.getElementById("tab-"+id)?.classList.add("active");
+  if(el?.classList?.contains("dn-link")) el.classList.add("active");
+  if(drawerOpen&&id!=="schedule"){drawerOpen=false;document.getElementById("filterDrawer").classList.remove("open");}
 }
 
 render();
